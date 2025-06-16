@@ -431,13 +431,12 @@ function revealSecrets(event) {
   document.getElementById("next-button").style.display = "inline-block";
   const grid = document.querySelectorAll(".cell");
   const keepPositions = [];
-
+  event.target.style.display = "none";
   const gridData = Array.from(grid).map(cell => ({
     row: parseInt(cell.dataset.row),
     col: parseInt(cell.dataset.col),
     letter: cell.textContent,
     el: cell
-    event.target.style.display = "none";
   }));
 
   function markWordPositions(word) {
