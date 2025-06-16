@@ -427,6 +427,8 @@ document.getElementById("next-button").style.display = "inline-block";
 }
 
 function revealSecrets(event) {
+  document.getElementById("secret-message").style.display = "block";
+  document.getElementById("next-button").style.display = "inline-block";
   const grid = document.querySelectorAll(".cell");
   const keepPositions = [];
 
