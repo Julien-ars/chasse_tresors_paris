@@ -3,12 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <title>Jeu de Memory – Qui repose ici ?</title>
-  <link rel="stylesheet" href="style_memory.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
+<style> 
+body {
+  font-family: "Poppins", serif;
+  background-color: #000000;
+  color: #f6f7f8;
+  text-align: center;
+  padding: 30px;
+}
+
+h2 {
+  color: #f6f7f8;
+  margin-bottom: 10px;
+  font-weight: bold;
+
+}
+.button {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #828282;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+.memory-card {
+  aspect-ratio: 1 / 1;
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.memory-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card-front {
+  background: #999999;
+  font-size: 2.5em;
+}
+
+.card-back {
+  background: rgb(149, 149, 149);
+  transform: rotateY(180deg);
+  flex-direction: column;
+  padding: 5px;
+}
+
+.card-back img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.card-back p {
+  margin: 5px 0 0;
+  font-size: 0.9em;
+  pointer-events: none;
+}
+</style>
+
 <body>
-  <h2> Jeu de Memory : Qui repose ici ?</h2>
+  <h2> Memory : Qui repose ici ?</h2>
   <p>Sélectionne les paires des défunts qui occupent le cimetière Montparnasse.</p>
   <div id="memory-board" class="memory-grid"></div>
+  <div id="next-button" style="display: none; margin-top: 30px; text-align: center;">
+    <a href="Gothique_menu.html" class="button">Continuer</a>
+  </div>
+  
+ 
 
   <script>
     const figures = [
@@ -32,7 +132,7 @@
 
       card.innerHTML = `
         <div class="card-inner">
-          <div class="card-front">❓</div>
+          <div class="card-front">?</div>
           <div class="card-back">
             <img src="images/${figure.img}" alt="${figure.name}">
             <p>${figure.name}<br><small>${figure.dates}</small></p>
@@ -55,6 +155,9 @@
           if (first.figure.name === second.figure.name && first.index !== second.index) {
             matchedIndices.push(first.index, second.index);
             flippedCards = [];
+            if (matchedIndices.length === cards.length) {
+              document.getElementById("next-button").style.display = "inline-block";
+            }
           } else {
             setTimeout(() => {
               first.card.classList.remove("flipped");
@@ -64,9 +167,10 @@
           }
         }
       });
-
       board.appendChild(card);
     });
   </script>
+ 
+
 </body>
 </html>
