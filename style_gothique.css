@@ -30,6 +30,7 @@ b {
 /*navbar*/
 
 .navbar {
+    width: 100vw;
     background-color: #ffffff;
     padding: 15px 30px;
     display: flex;
@@ -39,6 +40,7 @@ b {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-sizing: border-box;
 }
 
 .nav-title {
@@ -674,4 +676,11 @@ a.button {
   .Lieu_1 {
     text-align: center;
   }
+
+@media (max-width: 768px) {
+  .dropdown-menu {
+    margin-left: 20px;
+  }
+}
+
   
