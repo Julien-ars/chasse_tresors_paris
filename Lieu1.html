@@ -1,90 +1,108 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset=""utf-8>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Premier Lieu</title>
-        <link rel="stylesheet" href = "style_gothique.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    </head>
-    <script>
-        function verifierDates() {
-          const valeurs = Array.from(document.querySelectorAll('.date-input')).map(input => input.value.trim());
-          const correctes = ["1986", "1867", "1994", "1867"];
-          const message = document.getElementById('message-resultat');
-          const bouton = document.getElementById('bouton-continu');
-      
-          let bonnes = 0;
-          for (let i = 0; i < 4; i++) {
-            if (valeurs[i] === correctes[i]) bonnes++;
-          }
-      
-          if (bonnes === 4) {
-            message.textContent = "🩸 Bravo ! Vous pouvez poursuivre l'aventure.";
-            message.style.color = "darkgreen";
-            bouton.style.display = "block";
-          } else if (bonnes >= 2) {
-            message.textContent = "⚠️ Vous y êtes presque... Mais les ténèbres vous observent encore.";
-            message.style.color = "#b8860b";
-            bouton.style.display = "none";
-          } else {
-            message.textContent = "❌ Vous êtes en êtes loin. Fuyez avant qu’il ne soit trop tard.";
-            message.style.color = "#8b0000";
-            bouton.style.display = "none";
-          }
-        }
-      </script>
-      
-    <body>
-        <nav class="navbar">
-            <div class="nav-title">Aventuriers</div>
-            <ul class="nav-links">
-                <li><a href="regles.html">Règles</a></li>
-                <li class="dropdown">
-                    <a href="#">Parcours</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="Gothique_menu.html">Gothique</a></li>
-                        <li><a href="louislegrand.html">Louis-le-Grand</a></li>
-                        <li><a href="lieux.html">Lieux individuels</a></li>
-                    </ul>
-                </li>
-                <li><a href="#apropos">À propos</a></li>
-            </ul>
-        </nav>       
-        <div class="image-container">
-            <img src="titre.png" alt="Gothic in paris" class="image-gothique">
-            <img src="02.png" alt="Gothic in paris" class="image-gothique">
-            <img src="plan_montparnasse.PNG" alt="Gothic in paris" class="image-gothique">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier Lieu</title>
+    <link rel="stylesheet" href="style_gothique.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<script>
+    let essais = 0; // compteur d'essais
+
+    function verifierDates() {
+      const valeurs = Array.from(document.querySelectorAll('.date-input')).map(input => input.value.trim());
+      const correctes = ["1986", "1867", "1994", "1867"];
+      const message = document.getElementById('message-resultat');
+      const bouton = document.getElementById('bouton-continu');
+      const boutonAbandon = document.getElementById('bouton-abandonner');
+
+      let bonnes = 0;
+      for (let i = 0; i < 4; i++) {
+        if (valeurs[i] === correctes[i]) bonnes++;
+      }
+
+      essais++;
+
+      if (bonnes === 4) {
+        message.textContent = "🩸 Bravo ! Vous pouvez poursuivre l'aventure.";
+        message.style.color = "darkgreen";
+        bouton.style.display = "block";
+        if (boutonAbandon) boutonAbandon.style.display = "none";
+      } else if (bonnes >= 2) {
+        message.textContent = "⚠️ Vous y êtes presque... Mais les ténèbres vous observent encore.";
+        message.style.color = "#b8860b";
+        bouton.style.display = "none";
+      } else {
+        message.textContent = "❌ Vous êtes en êtes loin. Fuyez avant qu’il ne soit trop tard.";
+        message.style.color = "#8b0000";
+        bouton.style.display = "none";
+      }
+
+      // afficher le bouton abandonner au bout de 3 essais
+      if (essais >= 3 && boutonAbandon) {
+        boutonAbandon.style.display = "block";
+      }
+    }
+</script>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-title">Aventuriers</div>
+        <ul class="nav-links">
+            <li><a href="regles.html">Règles</a></li>
+            <li class="dropdown">
+                <a href="#">Parcours</a>
+                <ul class="dropdown-menu">
+                    <li><a href="Gothique_menu.html">Gothique</a></li>
+                    <li><a href="louislegrand.html">Louis-le-Grand</a></li>
+                    <li><a href="lieux.html">Lieux individuels</a></li>
+                </ul>
+            </li>
+            <li><a href="#apropos">À propos</a></li>
+        </ul>
+    </nav>       
+
+    <div class="image-container">
+        <img src="images/titre.png" alt="Gothic in paris" class="image-gothique">
+        <img src="images/02.png" alt="Gothic in paris" class="image-gothique">
+        <img src="images/plan_montparnasse.PNG" alt="Gothic in paris" class="image-gothique">
+    </div>
+
+    <div class="flip-container" onclick="this.classList.toggle('flipped')">
+        <div class="flipper">
+            <div class="front">
+                <img src="images/lettre 2.png" alt="Face avant" />
+            </div>
+            <div class="back">
+                <img src="images/questions.png" alt="Face arrière" />
+            </div>
+        </div>
+    </div>
+
+    <div class="Lieu_1">
+        <p>/Compte Cenusa vous a laissé quelques indications au dos, alors tournez la page !</p>
+    </div>
+
+    <div class="date-checker">
+        <p class="date-title">Entrez les quatre années pour révéler le secret :</p>
+        <div class="date-inputs">
+            <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
+            <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
+            <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
+            <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
+        </div>
+        <button class="validate-button" onclick="verifierDates()">Soumettre</button>
+        <p id="message-resultat" class="date-result"></p>
+
+        <div class="continue-wrapper" id="bouton-continu" style="display: none;">
+            <a href="suivant.html" class="continue-button">Continuer</a>
         </div>
 
-        <div class="flip-container" onclick="this.classList.toggle('flipped')">
-            <div class="flipper">
-              <div class="front">
-                <img src="Lettre 2.png" alt="Face avant" />
-              </div>
-              <div class="back">
-                <img src="questions.png" alt="Face arrière" />
-              </div>
-            </div>
-          </div>
-          <div class = "Lieu_1">
-            <p>Comte Cenusa vous a laissé quelques indications au dos ... alors tournez la page !</p>
-          </div>
-          <div class="date-checker">
-            <p class="date-title">Entrez les quatre années pour révéler le secret :</p>
-            <div class="date-inputs">
-              <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
-              <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
-              <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
-              <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
-            </div>
-            <button class="validate-button" onclick="verifierDates()">Soumettre</button>
-            <p id="message-resultat" class="date-result"></p>
-          
-            <div class="continue-wrapper" id="bouton-continu">
-              <a href="suivant.html" class="continue-button">Continuer</a>
-            </div>
-          </div>
-
-    </body>
+        <div class="continue-wrapper" id="bouton-abandonner" style="display: none; margin-top: 10px;">
+            <a href="abandon.html" class="continue-button">Abandonner</a>
+        </div>
+    </div>
+</body>
 </html>
