@@ -67,14 +67,14 @@ b {
 
 @media (max-width: 768px) {
     .nav-links {
-        gap: 25px;
+        gap: 15px;
     }
     .nav-links li a {
-      font-size: 0.85em;
+      font-size: 0.65em;
     }
   
     .nav-title {
-      font-size: 1.4em;
+      font-size: 1.2em;
     }
 }
 
