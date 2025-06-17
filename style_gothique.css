@@ -553,7 +553,7 @@ a.button {
     perspective: 1000px;
     width: 100%;
     max-width: 600px;
-    height: 700px;
+    height: auto;
     margin: 0 auto 20px;
     cursor: pointer;
     position: relative;
