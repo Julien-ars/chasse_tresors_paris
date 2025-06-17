@@ -344,20 +344,6 @@ gridCells.forEach(cell => {
   });
 });
 
-// Gestion du clic sur les mots de la liste
-listItems.forEach(item => {
-  item.addEventListener("click", () => {
-    if (!item.classList.contains("found")) {
-      item.classList.add("found");
-      foundWords.add(item.textContent);
-    } else {
-      item.classList.remove("found");
-      foundWords.delete(item.textContent);
-    }
-    checkCompletion();
-  });
-});
-
 function checkCompletion() {
   if (foundWords.size === words.length) {
     const keepPositions = [];
