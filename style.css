@@ -292,3 +292,75 @@ b {
     text-align: left; 
     padding: 50px 80px 30px;
 }
+
+.menu-toggle {
+  display: none;
+  font-size: 2em;
+  cursor: pointer;
+  color: #3b2d24;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    border-radius: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: none;
+  }
+
+  .dropdown > a::after {
+    content: " ▼";
+    font-size: 0.7em;
+  }
+
+  .dropdown > a {
+    cursor: default;
+  }
+
+  .dropdown-menu {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .button-container {
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .button {
+    height: 120px;
+    font-size: 1.2em;
+  }
+
+  .btn1, .btn2, .btn3 {
+    font-size: 1.2em;
+    padding: 8px 12px;
+    text-align: center;
+  }
+}
+
