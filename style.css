@@ -1,0 +1,228 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;
+}
+
+.main-content {
+    margin: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #000000;
+}
+
+b {
+    font-weight: bold;
+}
+
+.navbar {
+    background-color: #ffffff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.nav-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #3b2d24;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 90px;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 25px;
+    }
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: #3b2d24;
+    font-size: 1em;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #8b0000;
+}
+
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+}
+
+/* Sous-menu caché par défaut */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    min-width: 180px;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Lien dans le menu déroulant */
+.dropdown-menu li a {
+    display: block;
+    padding: 12px 20px;
+    color: #3b2d24;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f0e6df;
+}
+
+/* Affiche le menu au survol */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+.btn1 { 
+    background-image: url('https://image.lexica.art/full_webp/05a8e513-cb9f-4690-842e-48717c91995c'); 
+    background-size: cover;
+    background-position: center;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1.8em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn1:hover {
+    background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url('https://image.lexica.art/full_webp/05a8e513-cb9f-4690-842e-48717c91995c');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  
+  
+  .btn2 { 
+    background-image: url('https://www.louislegrand.fr/wp-content/uploads/2019/08/D14D8041-2048x1366.jpg'); 
+    background-size: cover;
+    background-position: center;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1.8em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn2:hover {
+    background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url('https://www.louislegrand.fr/wp-content/uploads/2019/08/D14D8041-2048x1366.jpg');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+  }
+
+
+  .btn3 { 
+    background-image: url('https://www.terre.tv/wp-content/uploads/2022/04/sorbonne-paris.jpg');
+    background-size: cover;
+    background-position: center;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1.8em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn3:hover {
+    background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url('https://www.terre.tv/wp-content/uploads/2022/04/sorbonne-paris.jpg');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+  }
+
+
+
+
+.bottom-button-container {
+  display: flex;
+  justify-content: flex-end; /* Aligne à droite */
+}
+
+.contact {
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: white;
+  background-color: #ff9100; /* Bleu */
+  padding: 12px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.bottom-image {
+    display: flex;
+    justify-content: flex-start; /* Aligne à gauche */
+    padding: 1px 1px 1px;
+    width: 200px;
+    height: 200px;
+}
+
+.welcome-text {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;  
+    font-size: 1.2em;
+    text-align: left; 
+    padding: 50px 80px 30px;
+}
+
