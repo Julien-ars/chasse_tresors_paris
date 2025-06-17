@@ -19,8 +19,7 @@
           essais++;
       
           if (valeur === "souvenir") {
-              message.textContent = "Bravo ! <p Une ombre au loin s'enfuit en dehors du cimetière ! Vous entendez les cloches de Notre-Dame sonner… C' est sûrement la prochaine destination du Vampire. Vous pouvez quitter le cimetière, bravo! Rendez-vous devant la cathédrale pour la suite de l' intrigue. Sur votre chemin n'hésitez pas à regarder autour de vous! Paris regorge de mystères et le vampire y a peut-être laissé des indices… Si vous cherchez des lieux gothiques, jetez un œil au Musée de Cluny." 
-";
+              message.textContent = "Bravo ! Une ombre au loin s'enfuit en dehors du cimetière ! Vous entendez les cloches de Notre-Dame sonner… C' est sûrement la prochaine destination du Vampire. Vous pouvez quitter le cimetière, bravo! Rendez-vous devant la cathédrale pour la suite de l' intrigue. Sur votre chemin n'hésitez pas à regarder autour de vous! Paris regorge de mystères et le vampire y a peut-être laissé des indices… Si vous cherchez des lieux gothiques, jetez un œil au Musée de Cluny.";
               message.style.color = "black";
               bouton.style.display = "block";
               boutonAbandon.style.display = "none";
@@ -35,29 +34,6 @@
               }
           }
       }
-
-            essais++;
-
-            if (bonnes === 4) {
-                message.textContent = "Bravo ! Vous pouvez poursuivre l'aventure.";
-                message.style.color = "darkgreen";
-                bouton.style.display = "block";
-                boutonAbandon.style.display = "none";
-            } else if (bonnes >= 2) {
-                message.textContent = "⚠️ Vous y êtes presque... Mais les ténèbres vous observent encore.";
-                message.style.color = "#b8860b";
-                bouton.style.display = "none";
-            } else {
-                message.textContent = "Vous êtes en êtes loin. Fuyez avant qu’il ne soit trop tard.";
-                message.style.color = "#8b0000";
-                bouton.style.display = "none";
-            }
-
-            if (essais >= 3) {
-                boutonAbandon.style.display = "block";
-            }
-          
-        
 
         function abandonner() {
           const input = document.querySelector('.date-input');
@@ -120,3 +96,5 @@
     </div>
 </body>
 </html>
+  
+
