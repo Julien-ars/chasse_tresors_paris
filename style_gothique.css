@@ -238,14 +238,22 @@ b {
 
 /* menu*/
 .menu-title {
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
-    color: #000000;
-    margin: 0;  
-    font-size: 1.3em;
-    text-align: left; 
-    padding: 50px 80px 30px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  margin: 0;
+  font-size: 2rem; /* plus gros */
+  font-weight: 700; /* gras */
+  text-align: left;
+  padding: 50px 80px 30px;
 }
+
+@media (max-width: 768px) {
+  .menu-title {
+    padding: 50px 30px 30px;
+  }
+}
+
 
 .button-container {
     display: flex;
