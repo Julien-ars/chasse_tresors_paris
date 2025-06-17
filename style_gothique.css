@@ -686,25 +686,29 @@ a.button {
   
   .validate-button {
     display: inline-block;
+    text-decoration: none; /* enlÃ¨ve le soulignement */
     background-color: #3b2d24;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 1em;
-    padding: 10px 20px;
+    font-size: 1.1em;
+    padding: 12px 30px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.4);
   }
   
   .validate-button:hover {
     background-color: #5c4333;
+    transform: translateY(-2px);
   }
   
   .continue-wrapper {
     margin-top: 30px;
-    display: none;
   }
   
   /* âœ… Si le formulaire est validÃ©, le bouton apparaÃ®t */
@@ -715,15 +719,24 @@ a.button {
   
   .continue-button {
     display: inline-block;
+    text-decoration: none; /* enlÃ¨ve le soulignement */
     background-color: #3b2d24;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 1em;
-    padding: 10px 30px;
+    font-size: 1.1em;
+    padding: 12px 30px;
     border: none;
     border-radius: 30px;
-    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.4);
+  }
+  .continue-button:hover {
+    background-color: #5c4333;
+    transform: translateY(-2px);
   }
   
   .date-result {
@@ -808,4 +821,10 @@ a.button {
       display: flex;
     }
   }
+
+  #message-resultat {
+    font-family: 'Poppins', sans-serif;
+    margin : 20px;
+  }
+  
   
