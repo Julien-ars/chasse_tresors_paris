@@ -745,9 +745,10 @@ a.button {
   }
 
   .dropdown:hover .dropdown-menu {
-    display: none; /* on désactive le survol */
+    display: none;
   }
 }
+
 
 
   
