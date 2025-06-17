@@ -200,7 +200,7 @@ b {
     box-shadow: none;
     min-width: unset;
     border-radius: 0;
-    padding-left: 40px; /* décale à gauche */
+    padding-left: 20px; /* décale à gauche */
   }
 
   .dropdown:hover .dropdown-menu {
