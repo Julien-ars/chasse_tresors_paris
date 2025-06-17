@@ -1,90 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf8">
-  <title>Chasse à Paris</title>
-  <link rel="stylesheet" href = "style_gothique.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <title>Wordle - Opéra</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-
-    const dropdownToggle = document.getElementById("dropdown-toggle");
-    const dropdownMenu = document.getElementById("dropdown-menu");
-
-    if (toggle && navLinks) {
-      toggle.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
-      });
-    }
-
-    if (dropdownToggle && dropdownMenu) {
-      dropdownToggle.addEventListener("click", function (e) {
-        e.preventDefault();
-        dropdownMenu.classList.toggle("active");
-      });
-    }
-  });
-</script>
-
-
-
-  
 <body>
+  <h2>🧩 Devine le mot mystère</h2>
+  <p>Un mot de 5 lettres... Peut-être un lieu mystérieux de Paris ?</p>
+  <div id="wordle-board" class="board"></div>
+  <input type="text" id="wordle-input" placeholder="Tape ton mot ici..." />
+  <br><button onclick="checkGuess()">Valider</button>
+  <p id="wordle-feedback"></p>
 
-<nav class="navbar">
-  <div class="nav-title"><a href="index.html">Aventuriers</a></div>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="regles.html">Règles</a></li>
-    <li class="dropdown">
-      <a href="#" id="dropdown-toggle">Parcours</a>
-      <ul class="dropdown-menu" id="dropdown-menu">
-        <li><a href="Gothique_menu.html">Gothique</a></li>
-        <li><a href="louislegrand.html">Louis-le-Grand</a></li>
-        <li><a href="demo.html">Démo</a></li>
-      </ul>
-    </li>
-    <li><a href="#apropos">À propos</a></li>
-  </ul>
-</nav>
+  <script>
+    const secret = "opera";
+    const maxTries = 6;
+    let tries = 0;
 
+    document.getElementById("wordle-input").setAttribute("maxlength", secret.length);
 
+    function createRow(guess) {
+      const row = document.createElement("div");
+      row.className = "row";
+      const secretArr = secret.split('');
+      const guessArr = guess.split('');
+      const result = Array(secret.length).fill('absent');
+      const secretUsed = Array(secret.length).fill(false);
 
+      // Première passe : marquer les lettres correctes
+      for (let i = 0; i < secret.length; i++) {
+        if (guessArr[i] === secretArr[i]) {
+          result[i] = 'correct';
+          secretUsed[i] = true;
+        }
+      }
 
+      // Deuxième passe : marquer les lettres présentes mais mal placées
+      for (let i = 0; i < secret.length; i++) {
+        if (result[i] !== 'correct') {
+          for (let j = 0; j < secret.length; j++) {
+            if (!secretUsed[j] && guessArr[i] === secretArr[j]) {
+              result[i] = 'present';
+              secretUsed[j] = true;
+              break;
+            }
+          }
+        }
+      }
 
-<div class = "welcome-text">
-  Bienvenue sur Hunt it ! Avec notre team d’aventuriers, découvrez Paris à travers des parcours ludiques et amusants ! 
-</div>
+      for (let i = 0; i < secret.length; i++) {
+        const letter = document.createElement("div");
+        letter.className = "cell " + result[i];
+        letter.textContent = guess[i] ? guess[i].toUpperCase() : "";
+        row.appendChild(letter);
+      }
 
-<div class="menu-title">
-  Nos énigmes
-</div>
+      return row;
+    }
 
+    function checkGuess() {
+      const input = document.getElementById("wordle-input");
+      const guess = input.value.toLowerCase().trim();
 
-<div class="button-container">
-  <a href="PG0menu.html" class="button btn1"> Paris Gothique</a>
-  <a href="https://example.com" class="button btn2">Lycée-Louis-le-Grand</a>
-  <a href="https://example.com" class="button btn3">Soon...</a>
-</div>
+      if (guess.length !== secret.length) {
+        document.getElementById("wordle-feedback").textContent = "⛔ Le mot doit contenir exactement " + secret.length + " lettres.";
+        return;
+      }
 
-<div class="bottom-image">
-  <img src="footsteps.jpg" alt="footsteps"/>
-</div>
+      if (tries >= maxTries) return;
 
-<div class="bottom-button-container">
-  <a href="mailto:agathesalmon5@gmail.com" class="contact">
-    <img src="envelope.svg" alt="Enveloppe" class="icon" />
-    Contactez-nous !
-  </a>
-</div>
+      const board = document.getElementById("wordle-board");
+      board.appendChild(createRow(guess));
+      tries++;
 
-
-
+      if (guess === secret) {
+        document.getElementById("wordle-feedback").textContent = "✅ Bravo ! Tu as deviné OPERA !";
+        input.disabled = true;
+      } else if (tries === maxTries) {
+        document.getElementById("wordle-feedback").textContent = "❌ Tu as épuisé tes essais ! Le mot était : " + secret.toUpperCase();
+        input.disabled = true;
+      } else {
+        document.getElementById("wordle-feedback").textContent = "❌ Ce n’est pas le bon mot. Réessaie !";
+        input.value = "";
+        input.focus();
+      }
+    }
+  </script>
 </body>
 </html>
