@@ -4,36 +4,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premier Lieu</title>
-    <link rel="stylesheet" href="style_gothique.css" />
+    <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <script>
         let essais = 0;
 
         function verifierDates() {
-            const inputs = document.querySelectorAll('.date-input');
-            const valeurs = Array.from(inputs).map(input => input.value.trim());
-            const correctes = ["1986", "1867", "1994", "1867"];
-            const message = document.getElementById('message-resultat');
-            const bouton = document.getElementById('bouton-continu');
-            const boutonAbandon = document.getElementById('bouton-abandonner');
-
-            const formatCorrect = valeurs.every(val => /^\d{4}$/.test(val));
-            if (!formatCorrect) {
-                message.textContent = "🚫 Veuillez entrer exactement 4 chiffres dans chaque case.";
-                message.style.color = "crimson";
-                bouton.style.display = "none";
-                return;
-            }
-
-            let bonnes = 0;
-            for (let i = 0; i < 4; i++) {
-                if (valeurs[i] === correctes[i]) bonnes++;
-            }
+          const input = document.querySelector('.date-input');
+          const valeur = input.value.trim().toLowerCase();
+          const message = document.getElementById('message-resultat');
+          const bouton = document.getElementById('bouton-continu');
+          const boutonAbandon = document.getElementById('bouton-abandonner');
+      
+          essais++;
+      
+          if (valeur === "souvenir") {
+              message.textContent = "Bravo ! <p Une ombre au loin s'enfuit en dehors du cimetière ! Vous entendez les cloches de Notre-Dame sonner… C' est sûrement la prochaine destination du Vampire. Vous pouvez quitter le cimetière, bravo! Rendez-vous devant la cathédrale pour la suite de l' intrigue. Sur votre chemin n'hésitez pas à regarder autour de vous! Paris regorge de mystères et le vampire y a peut-être laissé des indices… Si vous cherchez des lieux gothiques, jetez un œil au Musée de Cluny." 
+";
+              message.style.color = "black";
+              bouton.style.display = "block";
+              boutonAbandon.style.display = "none";
+          } else {
+              message.textContent = essais >= 3
+                  ? "Mot incorrect. Voulez-vous abandonner ?"
+                  : "Ce n’est pas encore le bon mot...";
+              message.style.color = "#8b0000";
+              bouton.style.display = "none";
+              if (essais >= 3) {
+                  boutonAbandon.style.display = "block";
+              }
+          }
+      }
 
             essais++;
 
             if (bonnes === 4) {
-                message.textContent = "🩸 Bravo ! Vous pouvez poursuivre l'aventure.";
+                message.textContent = "Bravo ! Vous pouvez poursuivre l'aventure.";
                 message.style.color = "darkgreen";
                 bouton.style.display = "block";
                 boutonAbandon.style.display = "none";
@@ -42,7 +48,7 @@
                 message.style.color = "#b8860b";
                 bouton.style.display = "none";
             } else {
-                message.textContent = "❌ Vous êtes en êtes loin. Fuyez avant qu’il ne soit trop tard.";
+                message.textContent = "Vous êtes en êtes loin. Fuyez avant qu’il ne soit trop tard.";
                 message.style.color = "#8b0000";
                 bouton.style.display = "none";
             }
@@ -50,31 +56,25 @@
             if (essais >= 3) {
                 boutonAbandon.style.display = "block";
             }
-        }
+          
+        
 
         function abandonner() {
-            const correctes = ["1986", "1867", "1994", "1867"];
-            const inputs = document.querySelectorAll('.date-input');
-            const message = document.getElementById('message-resultat');
-            const bouton = document.getElementById('bouton-continu');
-            const boutonAbandon = document.getElementById('bouton-abandonner');
-
-            inputs.forEach((input, i) => input.value = correctes[i]);
-
-            message.textContent = "🩸 Voici les bonnes réponses. Vous pouvez poursuivre l'aventure.";
-            message.style.color = "darkgreen";
-            bouton.style.display = "block";
-            boutonAbandon.style.display = "none";
-        }
+          const input = document.querySelector('.date-input');
+          const message = document.getElementById('message-resultat');
+          const bouton = document.getElementById('bouton-continu');
+          const boutonAbandon = document.getElementById('bouton-abandonner');
+      
+          input.value = "souvenir";
+          message.textContent = "Voici le bon mot. Vous pouvez poursuivre l'aventure.";
+          message.style.color = "darkgreen";
+          bouton.style.display = "block";
+          boutonAbandon.style.display = "none";
+      }
 
         window.addEventListener('DOMContentLoaded', () => {
             const inputs = document.querySelectorAll('.date-input');
-            inputs.forEach(input => {
-                input.addEventListener('input', () => {
-                    input.value = input.value.replace(/\D/g, '').slice(0, 4);
-                });
             });
-        });
     </script>
 </head>
 <body>
@@ -95,39 +95,23 @@
     </nav>
 
     <div class="image-container">
-        <img src="titre.png" alt="Gothic in paris" class="image-gothique">
-        <img src="02.png" alt="Gothic in paris" class="image-gothique">
-        <img src="plan_montparnasse.PNG" alt="Gothic in paris" class="image-gothique">
-    </div>
-
-    <div class="flip-container" onclick="this.classList.toggle('flipped')">
-        <div class="flipper">
-            <div class="front">
-                <img src="Lettre 2.png" alt="Face avant" />
-            </div>
-            <div class="back">
-                <img src="questions.png" alt="Face arrière" />
-            </div>
-        </div>
-    </div>
-
-    <div class="Lieu_1">
-        <p>Comte Cenusa vous a laissé quelques indications au dos, alors tournez la page !</p>
+        <img src="titre.png" alt="titre" class="image-gothique">
+        <img src="02.png" alt="deco" class="image-gothique">
+        <img src="lettresouvenir.png" alt="Gothic in paris" class="image-gothique">
+        
     </div>
 
     <div class="date-checker">
-        <p class="date-title">Entrez les quatre années pour révéler le secret :</p>
+        <p class="date-title">Entrez le mot maléfique :</p>
         <div class="date-inputs">
-            <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
-            <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
-            <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
-            <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
+            <input type="text" maxlength="8" class="date-input" placeholder="AAAAAAAA">
+          
         </div>
         <button class="validate-button" onclick="verifierDates()">Soumettre</button>
         <p id="message-resultat" class="date-result"></p>
 
         <div class="continue-wrapper" id="bouton-continu" style="display:none;">
-            <a href="suivant.html" class="continue-button">Continuer</a>
+            <a href="PG2Jmemory.html" class="continue-button">Continuer</a>
         </div>
 
         <div class="continue-wrapper" id="bouton-abandonner" style="display:none; margin-top: 10px;">
