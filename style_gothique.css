@@ -128,9 +128,6 @@ b {
     cursor: default;
   }
 
-  .dropdown-menu {
-    display: block;
-  }
 }
 
 @media (max-width: 600px) {
@@ -148,6 +145,16 @@ b {
     font-size: 1.2em;
     padding: 8px 12px;
     text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .dropdown-menu {
+    display: none;
+  }
+
+  .dropdown-menu.active {
+    display: block;
   }
 }
 
