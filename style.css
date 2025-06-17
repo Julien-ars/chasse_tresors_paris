@@ -46,9 +46,25 @@ b {
     padding: 0;
 }
 
+.nav-title a {
+  text-decoration: none;
+  color: #3b2d24;
+}
+
+.nav-title a:visited {
+  color: #3b2d24;
+}
+
 @media (max-width: 768px) {
     .nav-links {
         gap: 25px;
+    }
+    .nav-links li a {
+      font-size: 0.85em;
+    }
+  
+    .nav-title {
+      font-size: 1.4em;
     }
 }
 
