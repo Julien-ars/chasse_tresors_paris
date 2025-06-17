@@ -10,6 +10,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
+<script>
+  const toggleButton = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const dropdown = document.querySelector('.dropdown');
+
+  toggleButton.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  dropdown.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle('open');
+  });
+</script>
+
+  
 <body>
 
 <nav class="navbar">
