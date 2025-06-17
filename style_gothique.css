@@ -734,4 +734,20 @@ a.button {
   }
 }
 
+@media (max-width: 768px) {
+  .dropdown-menu {
+    display: none;
+    padding-left: 20px;
+  }
+
+  .dropdown-menu.active {
+    display: block;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: none; /* on désactive le survol */
+  }
+}
+
+
   
