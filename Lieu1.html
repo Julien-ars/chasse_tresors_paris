@@ -71,10 +71,33 @@
       }
     }
 
+
+function abandonner() {
+  const correctes = ["1986", "1867", "1994", "1867"];
+  const inputs = document.querySelectorAll('.date-input');
+  const message = document.getElementById('message-resultat');
+  const bouton = document.getElementById('bouton-continu');
+  const boutonAbandon = document.getElementById('bouton-abandonner');
+
+  // Remplir automatiquement les bonnes réponses
+  inputs.forEach((input, i) => input.value = correctes[i]);
+
+  // Afficher le message de réussite
+  message.textContent = "🩸 Voici les bonnes réponses. Vous pouvez poursuivre l'aventure.";
+  message.style.color = "darkgreen";
+
+  // Montrer le bouton Continuer
+  bouton.style.display = "block";
+
+  // (Optionnel) Masquer le bouton Abandonner
+  if (boutonAbandon) boutonAbandon.style.display = "none";
+}
+
       </script>
-      <div class="continue-wrapper" id="bouton-abandonner" style="display:none; margin-top: 10px;">
-        <a href="abandon.html" class="continue-button">Abandonner</a>
+      <div class="continue-wrapper" id="bouton-abandonner" style="display: none; margin-top: 10px;">
+          <button onclick="abandonner()" class="continue-button">Abandonner</button>
       </div>
+
      
     <body>
         <nav class="navbar">
