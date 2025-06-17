@@ -9,23 +9,26 @@
 </head>
 
 <body>
-
-<nav class="navbar">
-  <div class="nav-title"><a href="index.html">Aventuriers</a></div>
-  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="regles.html">Règles</a></li>
-    <li class="dropdown">
-      <a href="#" id="dropdown-toggle">Parcours</a>
-      <ul class="dropdown-menu" id="dropdown-menu">
-        <li><a href="Gothique_menu.html">Gothique</a></li>
-        <li><a href="louislegrand.html">Louis-le-Grand</a></li>
-        <li><a href="demo.html">Démo</a></li>
-      </ul>
-    </li>
-    <li><a href="#apropos">À propos</a></li>
-  </ul>
-</nav>
+  <nav class="navbar">
+    <div class="nav-title"><a href="index.html">Aventuriers</a></div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="regles.html">Règles</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" id="dropdown-toggle">Parcours</a>
+        <ul class="dropdown-menu" id="dropdown-menu">
+          <li><a href="Gothique_menu.html">Gothique</a></li>
+          <li><a href="louislegrand.html">Louis-le-Grand</a></li>
+          <li><a href="demo.html">Démo</a></li>
+        </ul>
+      </li>
+      <li><a href="#apropos">À propos</a></li>
+    </ul>
+  </nav>
+  
+  
+  
+  
 
 <div class="welcome-text">
   Bienvenue sur Hunt it ! Avec notre team d’aventuriers, découvrez Paris à travers des parcours ludiques et amusants ! 
@@ -51,22 +54,37 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.getElementById("menu-toggle");
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
     const navLinks = document.getElementById("nav-links");
     const dropdownToggle = document.getElementById("dropdown-toggle");
     const dropdownMenu = document.getElementById("dropdown-menu");
-
-    toggle.addEventListener("click", () => {
+  
+    // ouvrir/fermer le menu principal
+    menuToggle.addEventListener("click", () => {
       navLinks.classList.toggle("active");
     });
-
+  
+    // ouvrir/fermer le sous-menu uniquement sur mobile
     dropdownToggle.addEventListener("click", (e) => {
-      e.preventDefault();
-      dropdownMenu.classList.toggle("active");
+  if (window.innerWidth <= 768) {
+    e.preventDefault();
+
+    // referme tous les autres menus si besoin
+    document.querySelectorAll(".dropdown-menu").forEach(menu => {
+      if (menu !== dropdownMenu) menu.classList.remove("active");
     });
+
+    // toggle affichage du menu "Parcours"
+    dropdownMenu.classList.toggle("active");
+  }
+});
+
   });
-</script>
+  </script>
+  
+  
+  
 
 </body>
 </html>

@@ -1,62 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Règles du jeu</title>
     <link rel="stylesheet" href="style_gothique.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
 <body>
     <nav class="navbar">
-            <div class="nav-title"><a href="index.html">Aventuriers</a></div>
-            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="regles.html">Règles</a></li>
-                <li class="dropdown">
-                    <a href="#">Parcours</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="Gothique_menu.html">Gothique</a></li>
-                        <li><a href="louislegrand.html">Louis-le-Grand</a></li>
-                        <li><a href="lieu.html">Lieux individuels</a></li>
-                    </ul>
-                </li>
-                <li><a href="#apropos">À propos</a></li>
-            </ul>
-        </nav>
+        <div class="nav-title"><a href="index.html">Aventuriers</a></div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="regles.html">Règles</a></li>
+            <li class="dropdown">
+                <a href="#">Parcours</a>
+                <ul class="dropdown-menu">
+                    <li><a href="Gothique_menu.html">Gothique</a></li>
+                    <li><a href="louislegrand.html">Louis-le-Grand</a></li>
+                    <li><a href="lieu.html">Lieux individuels</a></li>
+                </ul>
+            </li>
+            <li><a href="#apropos">À propos</a></li>
+        </ul>
+    </nav>
 
     <div class="main-content">
         <h2>RÈGLES DE LA CHASSE AU TRÉSOR : Les Secrets de l’Ombre Gothique</h2>
 
-            <p>Bienvenue, aventuriers. Avant de plonger dans les mystères du Paris gothique, prenez connaissance des règles sacrées qui garantiront la sécurité… et le bon déroulement de votre quête.</p>
+        <h3>1. Le principe</h3>
+        <p>Chaque chasse est une expérience narrative et immersive à travers Paris. Vous suivez un fil d’histoire en accomplissant plusieurs étapes, et vous avancez en alternant entre énigmes sur place et mini-jeux interactifs sur smartphone. Certaines chasses vous mèneront dans des cimetières, d’autres dans des quartiers historiques qui vous permettront de découvrir Paris sous un nouvel angle.</p>
 
-            <p>1. Respect des lieux</p>
-            <ul>
-                <li>Vous vous aventurez dans des lieux historiques, parfois sacrés. Ne touchez à rien, ne dégradez rien.</li>
-                <li>Respectez les passants, les commerçants et le personnel des sites que vous visitez.</li>
-            </ul>
-            <p>2. Déroulement du jeu</p>
-            <ul>
-                <li>Le jeu se compose de X étapes (à définir), chacune correspondant à un lieu emblématique du gothique parisien.</li>
-                <li>À chaque étape, vous devrez résoudre une énigme pour découvrir le lieu suivant.</li>
-            </ul>
-            <p>3. Équipes</p>
-            <ul>
-                <li>Vous jouez par équipe de 2 à 5 joueurs.</li>
-                <li>Chaque équipe doit rester soudée. Aucune division ne sera tolérée (on ne réveille pas les fantômes en solo...).</li>
-            </ul>
+        <h3>2. Comment ça marche ?</h3>
+        <ul>
+            <li><strong>Sur le terrain :</strong> vous devrez observer des éléments précis (statues, plaques, gravures…). Rien ne doit être touché ou déplacé. Les indices sont visibles, mais parfois bien cachés.</li>
+            <li><strong>Mini-jeux numériques :</strong> sur votre téléphone, des jeux rapides (énigmes, codes, mots cachés…) permettent de débloquer les étapes suivantes.</li>
+        </ul>
+
+        <h3>3. Déplacements</h3>
+        <p>Vous êtes autorisé à prendre les transports (métro, bus...) ou à marcher, selon vos préférences. Vous pouvez faire une pause quand vous voulez, il n’y a pas besoin de se presser pour finir le jeu. Au contraire, n’hésitez pas à vous écarter du chemin pour explorer des lieux aux alentours.</p>
+
+        <h3>4. Respect des lieux</h3>
+        <p>Certains lieux sont historiques ou solennels. Veuillez respecter les consignes suivantes :</p>
+        <ul>
+            <li>Ne touchez à rien.</li>
+            <li>Ne dérangez personne.</li>
+            <li>Restez discret et silencieux dans les lieux de recueillement.</li>
+            <li>Tout se fait par observation, intuition et logique.</li>
+            <li>Ne vous aventurez jamais dans des lieux non accessibles au public ou fermés au moment du jeu.</li>
+            <li>Respectez les passants, les commerçants et le personnel des sites que vous visitez.</li>
+        </ul>
+
+        <h3>5. Besoin d’aide ?</h3>
+        <ul>
+            <li>Vous pouvez demander un indice à tout moment si vous êtes bloqués.</li>
+            <li>Si le parcours devient trop long ou trop complexe, vous pouvez sauter une étape ou abandonner sans souci.</li>
+            <li>Vous pouvez utiliser Internet à tout moment (pour vérifier des noms, chercher des indices, etc.).</li>
+        </ul>
     </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggle = document.getElementById("menu-toggle");
+            const navLinks = document.getElementById("nav-links");
 
-    toggle.addEventListener("click", function () {
-      navLinks.classList.toggle("active");
-    });
-  });
-</script>
-
-
+            toggle.addEventListener("click", function () {
+                navLinks.classList.toggle("active");
+            });
+        });
+    </script>
 </body>
 </html>
 

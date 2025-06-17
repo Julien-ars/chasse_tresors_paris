@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jeu de Memory – Qui repose ici ?</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
@@ -20,8 +20,8 @@ h2 {
   color: #f6f7f8;
   margin-bottom: 10px;
   font-weight: bold;
-
 }
+
 .button {
   display: inline-block;
   padding: 10px 16px;
@@ -101,22 +101,21 @@ h2 {
 </style>
 
 <body>
-  <h2> Memory : Qui repose ici ?</h2>
+  <h2>Memory : Qui repose ici ?</h2>
   <p>Sélectionne les paires des défunts qui occupent le cimetière Montparnasse.</p>
   <div id="memory-board" class="memory-grid"></div>
+  <div id="nathan" style="display: none;">Une ombre au loin s'enfuit en dehors du cimetière ! Vous entendez les cloches de Notre-Dame sonner… <br><br>C' est sûrement la prochaine destination du Vampire. Vous pouvez quitter le cimetière, bravo! Rendez-vous devant la cathédrale pour la suite de l' intrigue. Sur votre chemin n'hésitez pas à regarder autour de vous! Paris regorge de mystères et le vampire y a peut-être laissé des indices… Si vous cherchez des lieux gothiques, jetez un œil au Musée de Cluny.</div>
   <div id="next-button" style="display: none; margin-top: 30px; text-align: center;">
     <a href="Gothique_menu.html" class="button">Continuer</a>
   </div>
-  
- 
 
   <script>
     const figures = [
-      { name: "Sartre", dates: "1905–1980", img: "sartre.jpg" },
-      { name: "Beauvoir", dates: "1908–1986", img: "beauvoir.jpg" },
-      { name: "Baudelaire", dates: "1821–1867", img: "baudelaire.jpg" },
-      { name: "Ionesco", dates: "1909–1994", img: "ionesco.jpg" },
-      { name: "Larousse", dates: "1817–1875", img: "larousse.jpg" }
+      { name: "Sartre", img: "../sartre.jpg" },
+      { name: "Beauvoir", img: "../beauvoir.jpg" },
+      { name: "Baudelaire", img: "../baudelaire.jpg" },
+      { name: "Ionesco", img: "../ionesco.jpg" },
+      { name: "Larousse", img: "../larousse.jpg" }
     ];
 
     const board = document.getElementById("memory-board");
@@ -135,7 +134,7 @@ h2 {
           <div class="card-front">?</div>
           <div class="card-back">
             <img src="images/${figure.img}" alt="${figure.name}">
-            <p>${figure.name}<br><small>${figure.dates}</small></p>
+            <p>${figure.name}</p>
           </div>
         </div>
       `;
@@ -157,6 +156,7 @@ h2 {
             flippedCards = [];
             if (matchedIndices.length === cards.length) {
               document.getElementById("next-button").style.display = "inline-block";
+              document.getElementById("nathan").style.display = "inline-block";
             }
           } else {
             setTimeout(() => {
@@ -167,10 +167,10 @@ h2 {
           }
         }
       });
+
       board.appendChild(card);
     });
   </script>
- 
-
 </body>
 </html>
+

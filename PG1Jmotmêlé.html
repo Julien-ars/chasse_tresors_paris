@@ -397,7 +397,7 @@ function checkCompletion() {
             for (let i = 0; i < word.length; i++) {
               const rr = r + dr * i;
               const cc = c + dc * i;
-              if (rr >= 15 || cc >= 15) {
+              if (rr < 0 || rr >= 15 || cc < 0 || cc >= 15) {
                 match = false;
                 break;
               }
@@ -464,7 +464,7 @@ function revealSecrets() {
           for (let i = 0; i < word.length; i++) {
             const rr = r + dr * i;
             const cc = c + dc * i;
-            if (rr >= 15 || cc >= 15) {
+            if (rr < 0 || rr >= 15 || cc < 0 || cc >= 15) {
               match = false;
               break;
             }
@@ -527,7 +527,7 @@ function checkMarkedWords() {
           for (let i = 0; i < word.length; i++) {
             const rr = r + dr * i;
             const cc = c + dc * i;
-            if (rr >= 15 || cc >= 15 || gridMatrix[rr][cc] !== word[i]) {
+            if (rr < 0 || rr >= 15 || cc < 0 || cc >= 15 || gridMatrix[rr][cc] !== word[i]) {
               ok = false;
               break;
             }
