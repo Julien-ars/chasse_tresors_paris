@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Mots Mêlés - Cimetière Montparnasse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #121213;
       color: #f6f7f8;
       text-align: center;
@@ -57,22 +58,45 @@
       color: #888;
       background-color: #333;
     }
+
+    .i {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+  
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #525252;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+  }
+
   </style>
 </head>
 <body>
-  <h2>🔍 Mots Mêlés Interactif</h2>
-  <p>Trouve tous les mots ci-dessous dans la grille en les sélectionnant manuellement. Une fois tous barrés, un message apparaîtra…</p>
+  <h2> Mots Mêlés </h2>
+  <p>Trouve tous les mots ci-dessous dans la grille en sélectionnant les lettres manuellement. Une fois tous barrés, un message apparaîtra…</p>
 
   <div class="grid" id="grid">
 <div class='cell' data-row='0' data-col='0'>H</div>
-<div class='cell' data-row='0' data-col='1'>J</div>
-<div class='cell' data-row='0' data-col='2'>R</div>
-<div class='cell' data-row='0' data-col='3'>A</div>
-<div class='cell' data-row='0' data-col='4'>T</div>
-<div class='cell' data-row='0' data-col='5'>H</div>
-<div class='cell' data-row='0' data-col='6'>M</div>
-<div class='cell' data-row='0' data-col='7'>C</div>
-<div class='cell' data-row='0' data-col='8'>L</div>
+<div class='cell' data-row='0' data-col='1'>P</div>
+<div class='cell' data-row='0' data-col='2'>E</div>
+<div class='cell' data-row='0' data-col='3'>N</div>
+<div class='cell' data-row='0' data-col='4'>O</div>
+<div class='cell' data-row='0' data-col='5'>M</div>
+<div class='cell' data-row='0' data-col='6'>B</div>
+<div class='cell' data-row='0' data-col='7'>R</div>
+<div class='cell' data-row='0' data-col='8'>E</div>
 <div class='cell' data-row='0' data-col='9'>X</div>
 <div class='cell' data-row='0' data-col='10'>N</div>
 <div class='cell' data-row='0' data-col='11'>G</div>
@@ -97,28 +121,28 @@
 <div class='cell' data-row='2' data-col='0'>U</div>
 <div class='cell' data-row='2' data-col='1'>A</div>
 <div class='cell' data-row='2' data-col='2'>U</div>
-<div class='cell' data-row='2' data-col='3'>T</div>
+<div class='cell' data-row='2' data-col='3'>I</div>
 <div class='cell' data-row='2' data-col='4'>O</div>
 <div class='cell' data-row='2' data-col='5'>S</div>
-<div class='cell' data-row='2' data-col='6'>N</div>
-<div class='cell' data-row='2' data-col='7'>U</div>
-<div class='cell' data-row='2' data-col='8'>G</div>
+<div class='cell' data-row='2' data-col='6'>C</div>
+<div class='cell' data-row='2' data-col='7'>I</div>
+<div class='cell' data-row='2' data-col='8'>M</div>
 <div class='cell' data-row='2' data-col='9'>E</div>
-<div class='cell' data-row='2' data-col='10'>U</div>
-<div class='cell' data-row='2' data-col='11'>J</div>
-<div class='cell' data-row='2' data-col='12'>Y</div>
-<div class='cell' data-row='2' data-col='13'>C</div>
-<div class='cell' data-row='2' data-col='14'>S</div>
+<div class='cell' data-row='2' data-col='10'>T</div>
+<div class='cell' data-row='2' data-col='11'>I</div>
+<div class='cell' data-row='2' data-col='12'>E</div>
+<div class='cell' data-row='2' data-col='13'>R</div>
+<div class='cell' data-row='2' data-col='14'>E</div>
 <div class='cell' data-row='3' data-col='0'>I</div>
 <div class='cell' data-row='3' data-col='1'>E</div>
-<div class='cell' data-row='3' data-col='2'>N</div>
+<div class='cell' data-row='3' data-col='2'>M</div>
 <div class='cell' data-row='3' data-col='3'>E</div>
-<div class='cell' data-row='3' data-col='4'>N</div>
+<div class='cell' data-row='3' data-col='4'>T</div>
 <div class='cell' data-row='3' data-col='5'>V</div>
 <div class='cell' data-row='3' data-col='6'>L</div>
 <div class='cell' data-row='3' data-col='7'>P</div>
 <div class='cell' data-row='3' data-col='8'>Z</div>
-<div class='cell' data-row='3' data-col='9'>N</div>
+<div class='cell' data-row='3' data-col='9'>P</div>
 <div class='cell' data-row='3' data-col='10'>T</div>
 <div class='cell' data-row='3' data-col='11'>F</div>
 <div class='cell' data-row='3' data-col='12'>C</div>
@@ -127,9 +151,9 @@
 <div class='cell' data-row='4' data-col='0'>P</div>
 <div class='cell' data-row='4' data-col='1'>P</div>
 <div class='cell' data-row='4' data-col='2'>U</div>
-<div class='cell' data-row='4' data-col='3'>I</div>
+<div class='cell' data-row='4' data-col='3'>O</div>
 <div class='cell' data-row='4' data-col='4'>T</div>
-<div class='cell' data-row='4' data-col='5'>F</div>
+<div class='cell' data-row='4' data-col='5'>E</div>
 <div class='cell' data-row='4' data-col='6'>O</div>
 <div class='cell' data-row='4' data-col='7'>H</div>
 <div class='cell' data-row='4' data-col='8'>J</div>
@@ -143,27 +167,27 @@
 <div class='cell' data-row='5' data-col='1'>U</div>
 <div class='cell' data-row='5' data-col='2'>Q</div>
 <div class='cell' data-row='5' data-col='3'>Y</div>
-<div class='cell' data-row='5' data-col='4'>P</div>
+<div class='cell' data-row='5' data-col='4'>N</div>
 <div class='cell' data-row='5' data-col='5'>T</div>
-<div class='cell' data-row='5' data-col='6'>F</div>
+<div class='cell' data-row='5' data-col='6'>R</div>
 <div class='cell' data-row='5' data-col='7'>A</div>
 <div class='cell' data-row='5' data-col='8'>N</div>
-<div class='cell' data-row='5' data-col='9'>T</div>
+<div class='cell' data-row='5' data-col='9'>R</div>
 <div class='cell' data-row='5' data-col='10'>O</div>
-<div class='cell' data-row='5' data-col='11'>M</div>
-<div class='cell' data-row='5' data-col='12'>E</div>
-<div class='cell' data-row='5' data-col='13'>E</div>
-<div class='cell' data-row='5' data-col='14'>W</div>
+<div class='cell' data-row='5' data-col='11'>N</div>
+<div class='cell' data-row='5' data-col='12'>U</div>
+<div class='cell' data-row='5' data-col='13'>I</div>
+<div class='cell' data-row='5' data-col='14'>T</div>
 <div class='cell' data-row='6' data-col='0'>N</div>
 <div class='cell' data-row='6' data-col='1'>G</div>
 <div class='cell' data-row='6' data-col='2'>F</div>
-<div class='cell' data-row='6' data-col='3'>Q</div>
+<div class='cell' data-row='6' data-col='3'>F</div>
 <div class='cell' data-row='6' data-col='4'>A</div>
-<div class='cell' data-row='6' data-col='5'>C</div>
+<div class='cell' data-row='6' data-col='5'>T</div>
 <div class='cell' data-row='6' data-col='6'>K</div>
-<div class='cell' data-row='6' data-col='7'>N</div>
+<div class='cell' data-row='6' data-col='7'>R</div>
 <div class='cell' data-row='6' data-col='8'>G</div>
-<div class='cell' data-row='6' data-col='9'>C</div>
+<div class='cell' data-row='6' data-col='9'>I</div>
 <div class='cell' data-row='6' data-col='10'>T</div>
 <div class='cell' data-row='6' data-col='11'>L</div>
 <div class='cell' data-row='6' data-col='12'>S</div>
@@ -172,141 +196,143 @@
 <div class='cell' data-row='7' data-col='0'>L</div>
 <div class='cell' data-row='7' data-col='1'>O</div>
 <div class='cell' data-row='7' data-col='2'>X</div>
-<div class='cell' data-row='7' data-col='3'>W</div>
+<div class='cell' data-row='7' data-col='3'>A</div>
 <div class='cell' data-row='7' data-col='4'>R</div>
 <div class='cell' data-row='7' data-col='5'>F</div>
-<div class='cell' data-row='7' data-col='6'>B</div>
+<div class='cell' data-row='7' data-col='6'>P</div>
 <div class='cell' data-row='7' data-col='7'>T</div>
-<div class='cell' data-row='7' data-col='8'>J</div>
+<div class='cell' data-row='7' data-col='8'>E</div>
 <div class='cell' data-row='7' data-col='9'>C</div>
 <div class='cell' data-row='7' data-col='10'>B</div>
 <div class='cell' data-row='7' data-col='11'>X</div>
 <div class='cell' data-row='7' data-col='12'>P</div>
-<div class='cell' data-row='7' data-col='13'>I</div>
+<div class='cell' data-row='7' data-col='13'>M</div>
 <div class='cell' data-row='7' data-col='14'>D</div>
 <div class='cell' data-row='8' data-col='0'>J</div>
 <div class='cell' data-row='8' data-col='1'>T</div>
 <div class='cell' data-row='8' data-col='2'>J</div>
-<div class='cell' data-row='8' data-col='3'>S</div>
+<div class='cell' data-row='8' data-col='3'>N</div>
 <div class='cell' data-row='8' data-col='4'>N</div>
 <div class='cell' data-row='8' data-col='5'>R</div>
 <div class='cell' data-row='8' data-col='6'>T</div>
-<div class='cell' data-row='8' data-col='7'>O</div>
+<div class='cell' data-row='8' data-col='7'>A</div>
 <div class='cell' data-row='8' data-col='8'>M</div>
-<div class='cell' data-row='8' data-col='9'>B</div>
+<div class='cell' data-row='8' data-col='9'>U</div>
 <div class='cell' data-row='8' data-col='10'>R</div>
 <div class='cell' data-row='8' data-col='11'>E</div>
 <div class='cell' data-row='8' data-col='12'>I</div>
-<div class='cell' data-row='8' data-col='13'>E</div>
-<div class='cell' data-row='8' data-col='14'>O</div>
+<div class='cell' data-row='8' data-col='13'>O</div>
+<div class='cell' data-row='8' data-col='14'>V</div>
 <div class='cell' data-row='9' data-col='0'>K</div>
 <div class='cell' data-row='9' data-col='1'>H</div>
 <div class='cell' data-row='9' data-col='2'>P</div>
-<div class='cell' data-row='9' data-col='3'>X</div>
+<div class='cell' data-row='9' data-col='3'>T</div>
 <div class='cell' data-row='9' data-col='4'>A</div>
 <div class='cell' data-row='9' data-col='5'>V</div>
 <div class='cell' data-row='9' data-col='6'>L</div>
 <div class='cell' data-row='9' data-col='7'>M</div>
-<div class='cell' data-row='9' data-col='8'>E</div>
+<div class='cell' data-row='9' data-col='8'>R</div>
 <div class='cell' data-row='9' data-col='9'>C</div>
-<div class='cell' data-row='9' data-col='10'>I</div>
+<div class='cell' data-row='9' data-col='10'>R</div>
 <div class='cell' data-row='9' data-col='11'>X</div>
 <div class='cell' data-row='9' data-col='12'>M</div>
-<div class='cell' data-row='9' data-col='13'>R</div>
+<div class='cell' data-row='9' data-col='13'>N</div>
 <div class='cell' data-row='9' data-col='14'>N</div>
-<div class='cell' data-row='10' data-col='0'>M</div>
+<div class='cell' data-row='10' data-col='0'>S</div>
 <div class='cell' data-row='10' data-col='1'>I</div>
 <div class='cell' data-row='10' data-col='2'>Q</div>
-<div class='cell' data-row='10' data-col='3'>I</div>
+<div class='cell' data-row='10' data-col='3'>O</div>
 <div class='cell' data-row='10' data-col='4'>S</div>
 <div class='cell' data-row='10' data-col='5'>G</div>
 <div class='cell' data-row='10' data-col='6'>H</div>
 <div class='cell' data-row='10' data-col='7'>P</div>
 <div class='cell' data-row='10' data-col='8'>P</div>
-<div class='cell' data-row='10' data-col='9'>T</div>
+<div class='cell' data-row='10' data-col='9'>N</div>
 <div class='cell' data-row='10' data-col='10'>O</div>
 <div class='cell' data-row='10' data-col='11'>M</div>
 <div class='cell' data-row='10' data-col='12'>B</div>
-<div class='cell' data-row='10' data-col='13'>E</div>
+<div class='cell' data-row='10' data-col='13'>S</div>
 <div class='cell' data-row='10' data-col='14'>R</div>
 <div class='cell' data-row='11' data-col='0'>M</div>
 <div class='cell' data-row='11' data-col='1'>Q</div>
 <div class='cell' data-row='11' data-col='2'>H</div>
-<div class='cell' data-row='11' data-col='3'>H</div>
-<div class='cell' data-row='11' data-col='4'>S</div>
-<div class='cell' data-row='11' data-col='5'>O</div>
-<div class='cell' data-row='11' data-col='6'>Z</div>
+<div class='cell' data-row='11' data-col='3'>M</div>
+<div class='cell' data-row='11' data-col='4'>O</div>
+<div class='cell' data-row='11' data-col='5'>R</div>
+<div class='cell' data-row='11' data-col='6'>T</div>
 <div class='cell' data-row='11' data-col='7'>X</div>
 <div class='cell' data-row='11' data-col='8'>J</div>
-<div class='cell' data-row='11' data-col='9'>A</div>
-<div class='cell' data-row='11' data-col='10'>P</div>
-<div class='cell' data-row='11' data-col='11'>A</div>
+<div class='cell' data-row='11' data-col='9'>O</div>
+<div class='cell' data-row='11' data-col='10'>A</div>
+<div class='cell' data-row='11' data-col='11'>H</div>
 <div class='cell' data-row='11' data-col='12'>R</div>
-<div class='cell' data-row='11' data-col='13'>I</div>
+<div class='cell' data-row='11' data-col='13'>T</div>
 <div class='cell' data-row='11' data-col='14'>S</div>
 <div class='cell' data-row='12' data-col='0'>M</div>
 <div class='cell' data-row='12' data-col='1'>U</div>
 <div class='cell' data-row='12' data-col='2'>W</div>
-<div class='cell' data-row='12' data-col='3'>U</div>
-<div class='cell' data-row='12' data-col='4'>E</div>
+<div class='cell' data-row='12' data-col='3'>E</div>
+<div class='cell' data-row='12' data-col='4'>S</div>
 <div class='cell' data-row='12' data-col='5'>K</div>
 <div class='cell' data-row='12' data-col='6'>M</div>
 <div class='cell' data-row='12' data-col='7'>Y</div>
 <div class='cell' data-row='12' data-col='8'>S</div>
 <div class='cell' data-row='12' data-col='9'>T</div>
 <div class='cell' data-row='12' data-col='10'>E</div>
-<div class='cell' data-row='12' data-col='11'>R</div>
-<div class='cell' data-row='12' data-col='12'>E</div>
-<div class='cell' data-row='12' data-col='13'>T</div>
+<div class='cell' data-row='12' data-col='11'>S</div>
+<div class='cell' data-row='12' data-col='12'>A</div>
+<div class='cell' data-row='12' data-col='13'>R</div>
 <div class='cell' data-row='12' data-col='14'>W</div>
 <div class='cell' data-row='13' data-col='0'>R</div>
 <div class='cell' data-row='13' data-col='1'>E</div>
 <div class='cell' data-row='13' data-col='2'>P</div>
 <div class='cell' data-row='13' data-col='3'>O</div>
-<div class='cell' data-row='13' data-col='4'>R</div>
+<div class='cell' data-row='13' data-col='4'>V</div>
 <div class='cell' data-row='13' data-col='5'>A</div>
-<div class='cell' data-row='13' data-col='6'>D</div>
-<div class='cell' data-row='13' data-col='7'>L</div>
-<div class='cell' data-row='13' data-col='8'>U</div>
-<div class='cell' data-row='13' data-col='9'>M</div>
-<div class='cell' data-row='13' data-col='10'>I</div>
-<div class='cell' data-row='13' data-col='11'>E</div>
-<div class='cell' data-row='13' data-col='12'>R</div>
+<div class='cell' data-row='13' data-col='6'>M</div>
+<div class='cell' data-row='13' data-col='7'>P</div>
+<div class='cell' data-row='13' data-col='8'>I</div>
+<div class='cell' data-row='13' data-col='9'>R</div>
+<div class='cell' data-row='13' data-col='10'>E</div>
+<div class='cell' data-row='13' data-col='11'>M</div>
+<div class='cell' data-row='13' data-col='12'>S</div>
 <div class='cell' data-row='13' data-col='13'>E</div>
 <div class='cell' data-row='13' data-col='14'>T</div>
 <div class='cell' data-row='14' data-col='0'>H</div>
 <div class='cell' data-row='14' data-col='1'>Z</div>
 <div class='cell' data-row='14' data-col='2'>T</div>
-<div class='cell' data-row='14' data-col='3'>T</div>
-<div class='cell' data-row='14' data-col='4'>Z</div>
-<div class='cell' data-row='14' data-col='5'>A</div>
-<div class='cell' data-row='14' data-col='6'>F</div>
-<div class='cell' data-row='14' data-col='7'>P</div>
+<div class='cell' data-row='14' data-col='3'>P</div>
+<div class='cell' data-row='14' data-col='4'>A</div>
+<div class='cell' data-row='14' data-col='5'>R</div>
+<div class='cell' data-row='14' data-col='6'>I</div>
+<div class='cell' data-row='14' data-col='7'>S</div>
 <div class='cell' data-row='14' data-col='8'>E</div>
 <div class='cell' data-row='14' data-col='9'>Z</div>
 <div class='cell' data-row='14' data-col='10'>F</div>
 <div class='cell' data-row='14' data-col='11'>K</div>
 <div class='cell' data-row='14' data-col='12'>H</div>
-<div class='cell' data-row='14' data-col='13'>W</div>
+<div class='cell' data-row='14' data-col='13'>E</div>
 <div class='cell' data-row='14' data-col='14'>L</div>
 </div><ul id='word-list'>
 <li>PARIS</li>
-<li>TOMBE</li>
-<li>OMBRE</li>
-<li>PHANTOM</li>
-<li>LUMIERE</li>
+<li>PEUR</li>
+<li>PENOMBRE</li>
+<li>VAMPIRE</li>
 <li>FANTOME</li>
-<li>OPERA</li>
-<li>RUINE</li>
-<li>MYSTERE</li>
+<li>GOTHIQUE</li>
+<li>MORT</li>
+<li>MONSTRE</li>
+<li>NUIT</li>
+<li>TERREUR</li>
 
 </ul>
-<button onclick="revealSecrets()" style="margin-top:20px;padding:8px 15px;font-size:1em;cursor:pointer;">Abandonner</button>
-<p id="secret-message" style="margin-top: 30px; font-size: 1.3em; display: none;">✨ Les mots cachés étaient : <strong>CIMETIÈRE</strong> et <strong>MONTPARNASSE</strong> !
-<button id="next-button" style="margin-top:20px;padding:10px 20px;font-size:1em;cursor:pointer;display:none;" onclick="location.href='Lieu1.html'">Continuer</button>
+
+<button onclick="revealSecrets()" style="margin-top:20px;padding:8px 15px;font-size:1em;cursor:pointer;">Abandonner</button> <br>
+<p id="secret-message" style="margin-top: 30px; font-size: 1.3em; display: none;">Les mots cachés étaient : <strong>CIMETIÈRE</strong> et <strong>MONTPARNASSE</strong> ! <br>
+<button id="next-button" style="margin-top:20px;padding:10px 20px;font-size:1em;cursor:pointer;display:none;" onclick="location.href='Lieu1.html'">Continuer</button> <br>
 
 <script>
-const words = ['PARIS', 'TOMBE', 'OMBRE', 'PHANTOM', 'LUMIERE', 'FANTOME', 'OPERA', 'RUINE', 'MYSTERE'];
+const words = ['PARIS', 'PEUR', 'PENOMBRE', 'FANTOME', 'GOTHIQUE', 'MORT', 'VAMPIRE', 'NUIT', 'MONSTRE', 'TERREUR'];
 const foundWords = new Set();
 const listItems = document.querySelectorAll("#word-list li");
 const gridCells = document.querySelectorAll(".cell");
@@ -344,9 +370,13 @@ function checkCompletion() {
     }));
 
     function markWordPositions(word) {
-      const directions = [
-        { dr: 0, dc: 1 },  // horizontal →
-        { dr: 1, dc: 0 }   // vertical ↓
+        const directions = [
+        { dr: 0, dc: 1 },   
+        { dr: 1, dc: 0 },   
+        { dr: 1, dc: 1 },  
+        { dr: -1, dc: 1 },  
+        { dr: 1, dc: -1 },  
+        { dr: -1, dc: -1 }  
       ];
 
       for (const { dr, dc } of directions) {
@@ -409,9 +439,13 @@ function revealSecrets() {
 
   function markWordPositions(word) {
     const directions = [
-      { dr: 0, dc: 1 },  // →
-      { dr: 1, dc: 0 }   // ↓
-    ];
+  { dr: 0, dc: 1 },   
+  { dr: 1, dc: 0 },   
+  { dr: 1, dc: 1 },  
+  { dr: -1, dc: 1 }, 
+  { dr: 1, dc: -1 },  
+  { dr: -1, dc: -1 } 
+];
     for (const { dr, dc } of directions) {
       for (let r = 0; r < 15; r++) {
         for (let c = 0; c < 15; c++) {
@@ -458,7 +492,6 @@ document.getElementById("next-button").style.display = "inline-block";
 
 }
 
-// Auto-check mots barrés
 function checkMarkedWords() {
   const gridMatrix = Array.from({ length: 15 }, () => Array(15).fill(""));
   document.querySelectorAll(".cell").forEach(cell => {
@@ -468,7 +501,14 @@ function checkMarkedWords() {
   });
 
   function isWordMarked(word) {
-    const dirs = [[0, 1], [1, 0]]; // → ↓
+    const dirs = [
+    [0, 1],   // →
+    [1, 0],   // ↓
+    [1, 1],   // ↘
+    [-1, 1],  // ↗
+    [1, -1],  // ↙
+    [-1, -1]  // ↖
+  ];
     for (let [dr, dc] of dirs) {
       for (let r = 0; r < 15; r++) {
         for (let c = 0; c < 15; c++) {
@@ -499,7 +539,6 @@ function checkMarkedWords() {
   checkCompletion();
 }
 
-// Ajouter l’écouteur de clic à chaque lettre pour trigger auto-check
 document.querySelectorAll(".cell").forEach(cell => {
   cell.addEventListener("click", () => {
     checkMarkedWords();
@@ -508,3 +547,4 @@ document.querySelectorAll(".cell").forEach(cell => {
 </script>
 </body>
 </html>
+
