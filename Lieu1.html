@@ -7,6 +7,34 @@
         <link rel="stylesheet" href = "style_gothique.css" />
         <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     </head>
+    <script>
+        function verifierDates() {
+          const valeurs = Array.from(document.querySelectorAll('.date-input')).map(input => input.value.trim());
+          const correctes = ["1986", "1867", "1994", "1867"];
+          const message = document.getElementById('message-resultat');
+          const bouton = document.getElementById('bouton-continu');
+      
+          let bonnes = 0;
+          for (let i = 0; i < 4; i++) {
+            if (valeurs[i] === correctes[i]) bonnes++;
+          }
+      
+          if (bonnes === 4) {
+            message.textContent = "🩸 Bravo ! Vous pouvez poursuivre l'aventure.";
+            message.style.color = "darkgreen";
+            bouton.style.display = "block";
+          } else if (bonnes >= 2) {
+            message.textContent = "⚠️ Vous y êtes presque... Mais les ténèbres vous observent encore.";
+            message.style.color = "#b8860b";
+            bouton.style.display = "none";
+          } else {
+            message.textContent = "❌ Vous êtes en êtes loin. Fuyez avant qu’il ne soit trop tard.";
+            message.style.color = "#8b0000";
+            bouton.style.display = "none";
+          }
+        }
+      </script>
+      
     <body>
         <nav class="navbar">
             <div class="nav-title">Aventuriers</div>
@@ -24,43 +52,39 @@
             </ul>
         </nav>       
         <div class="image-container">
-            <img src="titre.png" alt="Gothic in paris" class="image-gothique">
-            <img src="02.png" alt="Gothic in paris" class="image-gothique">
-            <img src="plan_montparnasse.PNG" alt="Gothic in paris" class="image-gothique">
+            <img src="images/titre.png" alt="Gothic in paris" class="image-gothique">
+            <img src="images/02.png" alt="Gothic in paris" class="image-gothique">
+            <img src="images/plan_montparnasse.PNG" alt="Gothic in paris" class="image-gothique">
         </div>
 
         <div class="flip-container" onclick="this.classList.toggle('flipped')">
             <div class="flipper">
               <div class="front">
-                <img src="lettre 2.png" alt="Face avant" />
+                <img src="images/lettre 2.png" alt="Face avant" />
               </div>
               <div class="back">
-                <img src="questions.png" alt="Face arrière" />
+                <img src="images/questions.png" alt="Face arrière" />
               </div>
             </div>
           </div>
-
-          <form class="date-checker" id="code-form">
+          <div class = "Lieu_1">
+            <p>/Compte Cenusa vous a laissé quelques indications au dos, alors tournez la page !</p>
+          </div>
+          <div class="date-checker">
             <p class="date-title">Entrez les quatre années pour révéler le secret :</p>
-          
             <div class="date-inputs">
-              <input type="text" name="d1" pattern="1986" required placeholder="AAAA">
-              <input type="text" name="d2" pattern="1867" required placeholder="AAAA">
-              <input type="text" name="d3" pattern="1994" required placeholder="AAAA">
-              <input type="text" name="d4" pattern="1867" required placeholder="AAAA">
+              <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
+              <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
+              <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
+              <input type="text" maxlength="4" class="date-input" placeholder="AAAA">
             </div>
+            <button class="validate-button" onclick="verifierDates()">Soumettre</button>
+            <p id="message-resultat" class="date-result"></p>
           
-            <input type="submit" id="valider-code" hidden>
-            <label for="valider-code" class="validate-button">Soumettre</label>
-          
-            <div class="continue-wrapper">
+            <div class="continue-wrapper" id="bouton-continu">
               <a href="suivant.html" class="continue-button">Continuer</a>
             </div>
-          </form>
-          
-          
-
-          
+          </div>
 
     </body>
 </html>
