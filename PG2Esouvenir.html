@@ -54,21 +54,51 @@
     </script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-title">Aventuriers</div>
-        <ul class="nav-links">
-            <li><a href="regles.html">Règles</a></li>
-            <li class="dropdown">
-                <a href="#">Parcours</a>
-                <ul class="dropdown-menu">
-                    <li><a href="Gothique_menu.html">Gothique</a></li>
-                    <li><a href="louislegrand.html">Louis-le-Grand</a></li>
-                    <li><a href="lieux.html">Lieux individuels</a></li>
-                </ul>
-            </li>
-            <li><a href="#apropos">À propos</a></li>
+  <nav class="navbar">
+    <div class="nav-title"><a href="index.html">Aventuriers</a></div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="regles.html">Règles</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" id="dropdown-toggle">Parcours</a>
+        <ul class="dropdown-menu" id="dropdown-menu">
+          <li><a href="PG0menu.html">Gothique</a></li>
+          <li><a href="louislegrand.html">Louis-le-Grand</a></li>
+          <li><a href="demo.html">Démo</a></li>
         </ul>
-    </nav>
+      </li>
+      <li><a href="#apropos">À propos</a></li>
+    </ul>
+  </nav>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+      const dropdownToggle = document.getElementById("dropdown-toggle");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+    
+      // ouvrir/fermer le menu principal
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    
+      // ouvrir/fermer le sous-menu uniquement sur mobile
+      dropdownToggle.addEventListener("click", (e) => {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+  
+      // referme tous les autres menus si besoin
+      document.querySelectorAll(".dropdown-menu").forEach(menu => {
+        if (menu !== dropdownMenu) menu.classList.remove("active");
+      });
+  
+      // toggle affichage du menu "Parcours"
+      dropdownMenu.classList.toggle("active");
+    }
+    });
+  
+    });
+    </script>
 
     <div class="image-container">
         <img src="titre.png" alt="titre" class="image-gothique">
@@ -76,24 +106,24 @@
         <img src="lettresouvenir.png" alt="Gothic in paris" class="image-gothique">
         
     </div>
-
-    <div class="date-checker">
-        <p class="date-title">Entrez le mot maléfique :</p>
-        <div class="date-inputs">
-            <input type="text" maxlength="8" class="date-input" placeholder="AAAAAAAA">
-          
-        </div>
-        <button class="validate-button" onclick="verifierDates()">Soumettre</button>
-        <p id="message-resultat" class="date-result"></p>
-
-        <div class="continue-wrapper" id="bouton-continu" style="display:none;">
-            <a href="PG2Jmemory.html" class="continue-button">Continuer</a>
-        </div>
-
-        <div class="continue-wrapper" id="bouton-abandonner" style="display:none; margin-top: 10px;">
-            <button onclick="abandonner()" class="continue-button">Abandonner</button>
-        </div>
+    <div class="bloc-mot-magique">
+  <div class="date-checker">
+    <p class="date-title">Entrez le mot maléfique :</p>
+    <div class="date-inputs">
+      <input type="text" maxlength="8" class="date-input" placeholder="AAAAAAAA">
     </div>
+    <button class="validate-button" onclick="verifierDates()">Soumettre</button>
+    <p id="message-resultat" class="date-result"></p>
+
+    <div class="continue-wrapper" id="bouton-continu" style="display:none;">
+      <a href="PG2Jmemory.html" class="continue-button">Continuer</a>
+    </div>
+
+    <div class="continue-wrapper" id="bouton-abandonner" style="display:none; margin-top: 10px;">
+      <button onclick="abandonner()" class="continue-button">Abandonner</button>
+    </div>
+  </div>
+
 </body>
 </html>
   

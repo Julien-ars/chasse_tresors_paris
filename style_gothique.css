@@ -61,7 +61,7 @@ b {
     font-family: 'Poppins', sans-serif;
     font-size: 1.8em;
     font-weight: 700;
-    color: #3b2d24;
+    color: #000000;
 }
 
 .nav-title a {
@@ -92,6 +92,7 @@ b {
   .menu-toggle {
     display: block;
   }
+
 
   .nav-links {
     display: none;
@@ -228,6 +229,7 @@ b {
   font-size: 1.3em;
   text-align: left;
   padding: 50px 80px 30px;
+  font-weight: bold;
 }
 
 .button-container {
@@ -331,6 +333,7 @@ b {
 .bottom-button-container {
   display: flex;
   justify-content: flex-end;
+  margin : 20px;
 }
 
 @media (max-width: 768px) {
@@ -393,8 +396,8 @@ b {
   color: #000000;
   margin: 0;
   font-size: 1.2em;
-  text-align: left;
-  padding: 50px 80px 30px;
+  text-align: justify;
+  padding: 50px 80px 10px;
 }
 
 .image-container {
@@ -581,6 +584,15 @@ a.button {
     text-decoration: none;
   }
   
+  @media (max-width: 768px) {
+    .menu-title {padding: 50px 30px 30px;}
+    .welcome-text {padding: 50px 30px 10px;}
+    .button-container {
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+      box-sizing: border-box;
+    }
+  }
 
   .flip-container {
     perspective: 1000px;
@@ -634,12 +646,19 @@ a.button {
     transform: rotateY(180deg);
   }
   
+  .bloc-mot-magique {
+  position: relative; /* ou absolute, fixed, etc., selon ton usage */
+  display: flex;
+  justify-content: center; /* ou start/end selon tes besoins */
+  align-items: center;
+  margin-top: -400px; /* ajustable */
 
+  }
 
   .date-checker {
     text-align: center;
-    margin: 430px auto;
-    max-width: 400px;
+    margin: 370px auto;
+    max-width: 700px;
     font-family: 'Poppins', sans-serif;
   }
   
