@@ -2,9 +2,10 @@
   box-sizing: border-box;
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 
@@ -40,19 +41,18 @@ b {
 /*navbar*/
 
 .navbar {
-    width: 100%;
-    background-color: #ffffff;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    margin: 0;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 
@@ -95,7 +95,7 @@ b {
   .nav-links {
     display: none;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
     background-color: white;
     position: absolute;
     top: 70px;
