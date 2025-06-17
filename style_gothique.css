@@ -27,6 +27,8 @@ b {
     font-weight: bold;
 }
 
+/*navbar*/
+
 .navbar {
     background-color: #ffffff;
     padding: 15px 30px;
@@ -46,6 +48,15 @@ b {
     color: #3b2d24;
 }
 
+.nav-title a {
+  text-decoration: none;
+  color: #3b2d24;
+}
+
+.nav-title a:visited {
+  color: #3b2d24;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -57,6 +68,13 @@ b {
 @media (max-width: 768px) {
     .nav-links {
         gap: 25px;
+    }
+    .nav-links li a {
+      font-size: 0.85em;
+    }
+  
+    .nav-title {
+      font-size: 1.4em;
     }
 }
 
