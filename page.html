@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=""utf-8>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Le Gothique</title>
+        <link rel="stylesheet" href = "style_gothique.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const menuToggle = document.getElementById("menu-toggle");
+          const navLinks = document.getElementById("nav-links");
+          const dropdownToggle = document.getElementById("dropdown-toggle");
+          const dropdownMenu = document.getElementById("dropdown-menu");
+        
+          menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+          });
+        
+          dropdownToggle.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+      
+          document.querySelectorAll(".dropdown-menu").forEach(menu => {
+            if (menu !== dropdownMenu) menu.classList.remove("active");
+          });
+      
+          dropdownMenu.classList.toggle("active");
+        }
+        });
+      
+        });
+        </script>
+
+    <body>
+        <nav class="navbar">
+          <div class="nav-title"><a href="index.html">Aventuriers</a></div>
+          <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="regles.html">Règles</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" id="dropdown-toggle">Parcours</a>
+              <ul class="dropdown-menu" id="dropdown-menu">
+                <li><a href="PG0menu.html">Gothique</a></li>
+                <li><a href="louislegrand.html">Louis-le-Grand</a></li>
+                <li><a href="demo.html">Démo</a></li>
+              </ul>
+            </li>
+            <li><a href="apropos.html">À propos</a></li>
+          </ul>
+        </nav>
+       
+      
+          <div class="main-content">
+            <img src="titre.png" alt="Gothic in paris" class="image-gothique">
+            <img src="05.png" alt="Gothic in paris" class="image-gothique">
+            <h2>L'Opéra Garnier </h2>
+            <p>Vous voici devant l'Opéra Garnier, le point d’orgue de notre histoire.
+            </p>
+            <p>Le Palais Garnier est l’un des opéras les plus célèbres au monde. Construit entre 1861 et 1875, il porte le nom de son architecte, Charles Garnier. Cet édifice est un chef-d’œuvre de l’architecture du Second Empire, mêlant style baroque, néo-classique et Renaissance.
+            </p>
+            <p>Sa façade richement ornée, ses majestueux escaliers en marbre et son grand foyer somptueusement décoré témoignent de la splendeur de cette époque. La salle de spectacle, célèbre pour son plafond peint par Marc Chagall, accueille chaque année des représentations d’opéra et de ballet qui attirent un public international.
+            </p>
+            <p>Le Palais Garnier est aussi connu pour avoir inspiré la célèbre légende du Fantôme de l’Opéra, ce mystérieux personnage qui hanterait ses couloirs et a fasciné des générations entières. Ce monument emblématique incarne à la fois l’histoire, l’art et la vie culturelle parisienne depuis plus d’un siècle.</p>
+            <img src="affiche.png" alt="affiche opéra" class="image-gothique">

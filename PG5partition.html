@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"utf-8>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Le Gothique</title>
+        <link rel="stylesheet" href = "style_gothique.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+        const dropdownToggle = document.getElementById("dropdown-toggle");
+        const dropdownMenu = document.getElementById("dropdown-menu");
+ 
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      
+        dropdownToggle.addEventListener("click", (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+    
+        document.querySelectorAll(".dropdown-menu").forEach(menu => {
+          if (menu !== dropdownMenu) menu.classList.remove("active");
+        });
+    
+        dropdownMenu.classList.toggle("active");
+      }
+      });
+    
+      });
+      </script>
+
+      <body>
+      <nav class="navbar">
+        <div class="nav-title"><a href="index.html">Hunt it</a></div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="regles.html">Règles</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" id="dropdown-toggle">Parcours</a>
+            <ul class="dropdown-menu" id="dropdown-menu">
+              <li><a href="PG0menu.html">Gothique</a></li>
+              <li><a href="louislegrand.html">Louis-le-Grand</a></li>
+              <li><a href="demo.html">Démo</a></li>
+            </ul>
+          </li>
+          <li><a href="apropos.html">À propos</a></li>
+        </ul>
+      </nav>
+         
+          <div class="main-content">
+            <div class="image-container">
+              <img src="titre.png" alt="Gothic in paris" class="image-gothique">
+              <img src="04.png" alt="Gothic in paris" class="image-gothique">
+              <p>En vous rapprochant de l'Opéra vous trouvez <b>une partition</b> collée sur l'entrée...</p>
+              <p> </p>
+              <img src="partition.png" alt="partition" class="image-gothique">
+
+              <div class="button-wrapper">
+                <a href="PG5Jmorpion.html" class="continue-button">Que le combat commence</a></button>
+            </div>
+
+          </div>

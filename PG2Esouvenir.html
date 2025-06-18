@@ -19,7 +19,7 @@
           essais++;
       
           if (valeur === "souvenir") {
-              message.textContent = "Le vampire va à présent tester votre mémoire.";
+              message.textContent = "Bravo! Le vampire va à présent tester votre mémoire.";
               message.style.color = "black";
               bouton.style.display = "block";
               boutonAbandon.style.display = "none";
@@ -42,7 +42,7 @@
           const boutonAbandon = document.getElementById('bouton-abandonner');
       
           input.value = "souvenir";
-          message.textContent = "Voici le bon mot. Vous pouvez poursuivre l'aventure.";
+          message.textContent = "Voici le bon mot. Le vampire va à présent tester votre mémoire.";
           message.style.color = "darkgreen";
           bouton.style.display = "block";
           boutonAbandon.style.display = "none";
@@ -55,7 +55,7 @@
 </head>
 <body>
   <nav class="navbar">
-    <div class="nav-title"><a href="index.html">Aventuriers</a></div>
+    <div class="nav-title"><a href="index.html">Hunt it</a></div>
     <div class="menu-toggle" id="menu-toggle">&#9776;</div>
     <ul class="nav-links" id="nav-links">
       <li><a href="regles.html">Règles</a></li>
@@ -67,7 +67,7 @@
           <li><a href="demo.html">Démo</a></li>
         </ul>
       </li>
-      <li><a href="#apropos">À propos</a></li>
+      <li><a href="apropos.html">À propos</a></li>
     </ul>
   </nav>
   <script>
@@ -103,8 +103,8 @@
     <div class="image-container">
         <img src="titre.png" alt="titre" class="image-gothique">
         <img src="02.png" alt="deco" class="image-gothique">
+        <p>Une dernière note apparaît : </p>
         <img src="lettresouvenir.png" alt="Gothic in paris" class="image-gothique">
-        
     </div>
     <div class="bloc-mot-magique">
   <div class="date-checker">
@@ -118,7 +118,6 @@
     <div class="continue-wrapper" id="bouton-continu" style="display:none;">
       <a href="PG2Jmemory.html" class="continue-button">Continuer</a>
     </div>
-
     <div class="continue-wrapper" id="bouton-abandonner" style="display:none; margin-top: 10px;">
       <button onclick="abandonner()" class="continue-button">Abandonner</button>
     </div>

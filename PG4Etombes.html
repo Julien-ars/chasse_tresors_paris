@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=""utf-8>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Le Gothique</title>
+        <link rel="stylesheet" href = "style_gothique.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+        const dropdownToggle = document.getElementById("dropdown-toggle");
+        const dropdownMenu = document.getElementById("dropdown-menu");
+ 
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      
+        dropdownToggle.addEventListener("click", (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+    
+        document.querySelectorAll(".dropdown-menu").forEach(menu => {
+          if (menu !== dropdownMenu) menu.classList.remove("active");
+        });
+    
+        dropdownMenu.classList.toggle("active");
+      }
+      });
+    
+      });
+      </script>
+
+    <script>
+      let essais = 0;
+
+      function verifierDates() {
+        const input = document.querySelector('.date-input');
+        const valeur = input.value.trim().toLowerCase();
+        const message = document.getElementById('message-resultat');
+        const bouton = document.getElementById('bouton-continu');
+        const boutonAbandon = document.getElementById('bouton-abandonner');
+    
+        essais++;
+    
+        if (valeur === "05422463989518") {
+            message.textContent = "Bravo!";
+            message.style.color = "black";
+            bouton.style.display = "block";
+            boutonAbandon.style.display = "none";
+        } else {
+            message.textContent = essais >= 3
+                ? "Mot incorrect. Voulez-vous abandonner ?"
+                : "Ce n’est pas encore la bonne combinaison...";
+            message.style.color = "#8b0000";
+            bouton.style.display = "none";
+            if (essais >= 3) {
+                boutonAbandon.style.display = "block";
+            }
+        }
+    }
+
+      function abandonner() {
+        const input = document.querySelector('.date-input');
+        const message = document.getElementById('message-resultat');
+        const bouton = document.getElementById('bouton-continu');
+        const boutonAbandon = document.getElementById('bouton-abandonner');
+    
+        input.value = "05422463989518";
+        message.textContent = "Voici la bonne combinaison ";
+        message.style.color = "darkgreen";
+        bouton.style.display = "block";
+        boutonAbandon.style.display = "none";
+    }
+
+      window.addEventListener('DOMContentLoaded', () => {
+          const inputs = document.querySelectorAll('.date-input');
+          });
+  </script>
+
+    <body>
+      <nav class="navbar">
+        <div class="nav-title"><a href="index.html">Hunt it</a></div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="regles.html">Règles</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" id="dropdown-toggle">Parcours</a>
+            <ul class="dropdown-menu" id="dropdown-menu">
+              <li><a href="PG0menu.html">Gothique</a></li>
+              <li><a href="louislegrand.html">Louis-le-Grand</a></li>
+              <li><a href="demo.html">Démo</a></li>
+            </ul>
+          </li>
+          <li><a href="apropos.html">À propos</a></li>
+        </ul>
+      </nav>
+       
+    
+          <div class="main-content">
+
+            <div class="image-container">
+                <img src="titre.png" alt="Gothic in paris" class="image-gothique">
+                <img src="04.png" alt="Gothic in paris" class="image-gothique">
+            </div>
+
+            <h2>Cimetière du Père-Lachaise</h2>
+            <p>Situé dans le <b>20e arrondissement</b>, le cimetière du père Lachaise est le <b> plus grand</b> cimetière de la capitale.</p> 
+            <p>Fondé en <b> 1804</b>, il doit son nom à <b>François d’Aix de La Chaise</b> , confesseur du roi Louis XIV. D'abord conçu pour répondre aux besoins croissants de la ville en matière d’inhumations, il est rapidement devenu un <b> lieu de sépulture privilégié.</b> </p> 
+            <p>En effet, le Père-Lachaise est un véritable <b>jardin historique</b>, qui s’étend sur environ <b>44 hectares</b>, et abrite les sépultures de nombreuses personnalités issues des arts, de la politique et des sciences.</p> 
+            <p>Il attire chaque année des <b>millions de visiteurs</b>, qui viennent se recueillir, découvrir son patrimoine ou simplement profiter de son <b>atmosphère paisible</b>.</p> 
+            <p><b>Regardez !</b> Une inscription est gravée dans la pierre...</p> 
+               
+            <div class="image-container">
+                  <img src="tombe.png" alt="tombe" class="image-gothique">
+                  <img src="plan_lachaise.PNG" alt="tombe" class="image-gothique">
+               </div> 
+            
+            <p>Trouvez les tombes correspondant aux descritpions et notez les deux derniers chiffres de leur date de mot. Entrez le code secret à seize chiffres une fois que vous êtes sûrs de votre réponse.</p> 
+            <ul>
+              <i>
+              <li>Ce <u>mausolée</u> caché est la dernière demeure de <u>deux amoureux</u> et leur fidèle compagnon.</p>
+              <li>Difficile de jouer là, <u>Arman</u> !</p>
+              <li><u>Te regarder</u>, pour l’éternité.</p>
+              <li>Même dans le trépas, cet <u>artiste</u> n'arrête pas !</p>
+              <li><u>La liberté guidant le peuple</u>, vers la tombe…</p>
+              <li>Mon dernier souhait ? Une <u>rose</u> qui ne fane jamais.</p>
+              <li>Rappelez-vous la morale : la raison du plus <u>mort</u> est toujours la meilleure...</p>
+              </i>
+            </ul>
+
+            <div class="bloc-mot-magique">
+              <div class="date-checker">
+                <p class="date-title">Entrez le code secret :</p>
+                <div class="date-inputs">
+                  <input type="text" maxlength="16" class="date-input" placeholder="1111111111111111">
+                </div>
+                <button class="validate-button" onclick="verifierDates()">Soumettre</button>
+                <p id="message-resultat" class="date-result"></p>
+            
+                <div class="continue-wrapper" id="bouton-continu" style="display:none;">
+                  <a href="PG4Dvampiresse.html" class="continue-button">Continuer</a>
+                </div>
+
+            
+                <div class="continue-wrapper" id="bouton-abandonner" style="display:none; margin-top: 10px;">
+                  <button onclick="abandonner()" class="continue-button">Abandonner</button>
+                </div>
+
+        
+            

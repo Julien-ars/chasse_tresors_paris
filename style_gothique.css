@@ -1,7 +1,51 @@
 * {
   box-sizing: border-box;
 }
+.equipe {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+  text-align: center;
+}
 
+.membre {
+  width: 180px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.membre img {
+  width: 100%;
+  aspect-ratio: 1 / 1;             /* carré parfait */
+  object-fit: cover;               /* image remplie sans déformation */
+  border: 2px solid white;         /* contour blanc simple */
+  background-color: white;         /* fond blanc si image a de la transparence */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* ombre légère pour un peu de relief */
+  margin-bottom: 8px;
+}
+
+.membre h4 {
+  margin: 8px 0 4px;
+  font-size: 1.1em;
+}
+
+.membre p {
+  font-size: 0.9em;
+  font-style: italic;
+  color: #555;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 480px) {
+  .membre {
+    width: 100%;
+    max-width: 300px;
+  }
+}
 html, body {
   margin: 0;
   padding: 0;
@@ -323,7 +367,7 @@ b {
 }
 
 .btn3:hover {
-  background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url('https://www.terre.tv/wp-content/uploads/2022/04/sorbonne-paris.jpg');
+  background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url('soon.png');
   background-size: cover;
   background-position: center;
   transform: scale(1.02);
@@ -437,15 +481,18 @@ b {
 
 @media (max-width: 768px) {
   .info-boxes {
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
   }
 
   .info-box {
-    width: 100%;
-    max-width: 300px;
+    width: calc(50% - 16px); /* deux par ligne avec l'espacement */
+    max-width: 180px;
   }
 }
+
 
 .info-title {
   font-weight: 700;
@@ -460,6 +507,20 @@ b {
   font-size: 1.3em;
   color: #3b2d24;
 }
+
+.alert-box {
+  background-color: #6a2222; /* bordeaux foncé */
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  margin: 20px auto;
+  max-width: 400px;
+}
+
 
 .difficulty-circles {
   display: flex;
@@ -561,7 +622,7 @@ b {
 
 .btn1 { background-image: url('https://image.lexica.art/full_webp/05a8e513-cb9f-4690-842e-48717c91995c'); }
 .btn2 { background-image: url('https://www.louislegrand.fr/wp-content/uploads/2019/08/D14D8041-2048x1366.jpg'); }
-.btn3 { background-image: url('https://www.terre.tv/wp-content/uploads/2022/04/sorbonne-paris.jpg'); }
+.btn3 { background-image: url('soon.png'); }
 
 a.button {
     text-decoration: none;
@@ -626,6 +687,7 @@ a.button {
   margin-top: 30px;
 }
 
+
   .front, .back {
     position: absolute;
     top: 0;
@@ -651,15 +713,19 @@ a.button {
   display: flex;
   justify-content: center; /* ou start/end selon tes besoins */
   align-items: center;
-  margin-top: -400px; /* ajustable */
+  margin-top: -450px; /* ajustable */
 
   }
 
   .date-checker {
     text-align: center;
-    margin: 370px auto;
+    margin: 800px auto;
     max-width: 700px;
     font-family: 'Poppins', sans-serif;
+  }
+  
+  @media (max-width: 768px) {
+    .date-checker{margin: 450px auto;}
   }
   
   .date-title {
@@ -668,12 +734,13 @@ a.button {
     font-size: 1.2em;
   }
   
-  .date-inputs {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
+  .date-input {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 280px;
+  box-sizing: border-box;
+  margin-bottom: 20px; /* espace en dessous */
+}
   
   .date-inputs input {
     width: 70px;
@@ -826,5 +893,36 @@ a.button {
     font-family: 'Poppins', sans-serif;
     margin : 20px;
   }
+
+  .titre_fin{
+    margin: 50px;
+    margin-top: 40px;
+  }
+  .discours_fin{
+    margin: 70px;
+    margin-top: 40px;
+    color: #690b0b;
+  }
+  .message_fin{
+    margin: 50px;
+    margin-top: 40px;
+  }
   
   
+.certificate {
+    display: inline-block;
+    text-decoration: none; /* enlÃ¨ve le soulignement */
+    background-color: #3b2d24;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.4);
+}

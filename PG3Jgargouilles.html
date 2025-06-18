@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gargouilles de Notre-Dame</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#000;
+      --fg:#fff;
+      --accent:#6d6d6d;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      text-align:center;
+      padding:20px;
+    }
+
+    h2{margin-bottom:10px;}
+    p{margin-bottom:10px;font-size:1em;}
+
+    /* → 2 colonnes fixes (donc 5 lignes pour 10 images) */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      max-width:600px;      /* largeur adaptée à 2 colonnes sur mobile */
+      margin:20px auto;
+    }
+
+    .image-tile{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      background:#f5f5f5;
+      border:1px solid #ccc;
+      border-radius:8px;
+      padding:8px;
+      transition:transform .2s;
+    }
+    .image-tile:hover{transform:scale(1.05);}
+    .image-tile img{
+      width:100%;
+      height:auto;
+      max-height:180px;     /* un peu plus grand pour la lisibilité */
+      border-radius:4px;
+    }
+    .image-tile input[type="checkbox"]{
+      margin-top:5px;
+      transform:scale(1.2);
+      touch-action:manipulation;
+    }
+
+    .controls{margin:20px 0;}
+    .controls button{
+      margin:0 10px;
+      padding:10px 16px;
+      font-size:1em;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      background:var(--accent);
+      color:var(--fg);
+      touch-action:manipulation;
+    }
+    .controls button:hover{background:#747474;}
+
+    .feedback{font-size:1.1em;margin-top:10px;}
+
+    #next-button{
+      display:none;
+      margin-top:20px;
+      padding:12px 24px;
+      font-size:1em;
+      color:var(--fg);
+      background:var(--accent);
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      box-shadow:0 4px 6px rgba(0,0,0,.2);
+      transition:background .3s ease;
+    }
+
+    /* Ajustement micro-écran ≤ 480 px : images un peu moins hautes */
+    @media(max-width:480px){
+      body{padding:12px;}
+      .image-tile img{max-height:140px;}
+      .controls button{margin:4px;padding:8px 12px;font-size:.9em;}
+    }
+  </style>
+</head>
+<body>
+  <h2>Retrouve les éléments gothiques de Notre-Dame</h2>
+  <p>Coche uniquement les 5 images représentant des éléments gothiques parmi celles proposées.</p>
+
+  <div id="image-grid" class="grid"></div>
+
+  <div class="controls">
+    <button onclick="verifySelection()">Valider</button>
+    <button onclick="revealAnswers()">Abandonner</button>
+    <button onclick="showHint()" id="hint-button" style="display:none;">💡 Indice</button>
+  </div>
+
+  <p id="feedback" class="feedback"></p>
+  <button id="next-button" onclick="location.href='PG3Dgargouille.html'">Continuer</button>
+
+  <script>
+    /* Images : mettez vos .png dans le même dossier */
+    const statues = [
+      { src:"nd-coin.png",     isGargoyle:true  },
+      { src:"autre1.png",      isGargoyle:false },
+      { src:"nd-pointe.png",   isGargoyle:true  },
+      { src:"autre2.png",      isGargoyle:false },
+      { src:"nd-rosace.png",   isGargoyle:true  },
+      { src:"autre3.png",      isGargoyle:false },
+      { src:"nd-triangle.png", isGargoyle:true  },
+      { src:"autre4.png",      isGargoyle:false },
+      { src:"nd-trone.png",    isGargoyle:true  },
+      { src:"autre5.png",      isGargoyle:false }
+    ].sort(()=>0.5-Math.random());
+
+    let attemptCount = 0;
+    const maxAttemptsBeforeHint = 3;
+
+    const grid     = document.getElementById("image-grid"),
+          feedback = document.getElementById("feedback"),
+          hintBtn  = document.getElementById("hint-button"),
+          nextBtn  = document.getElementById("next-button");
+
+    /* Génération des 10 mini-fiches */
+    statues.forEach((obj, index) => {
+      const tile = document.createElement("label");
+      tile.className = "image-tile";
+
+      const img = document.createElement("img");
+      img.src = obj.src;
+      img.alt = "Image "+(index+1);
+
+      const cb  = document.createElement("input");
+      cb.type  = "checkbox";
+      cb.dataset.index = index;
+      cb.setAttribute("aria-label","Choix de l’image "+(index+1));
+
+      tile.appendChild(img);
+      tile.appendChild(cb);
+      grid.appendChild(tile);
+    });
+
+    function verifySelection(){
+      const checkboxes = document.querySelectorAll("input[type=checkbox]");
+      let success = true;
+      attemptCount++;
+
+      checkboxes.forEach((box,i)=>{
+        if(box.checked !== statues[i].isGargoyle) success = false;
+      });
+
+      if(success){
+        feedback.textContent = "Bravo ! Tu as trouvé tous les bons éléments !";
+        feedback.style.color = "#2e7d32";
+        nextBtn.style.display = "inline-block";
+      }else{
+        feedback.textContent = "Ce n’est pas tout à fait ça. Réessaie.";
+        feedback.style.color = "#c62828";
+        if(attemptCount >= maxAttemptsBeforeHint){
+          hintBtn.style.display = "inline-block";
+        }
+      }
+    }
+
+    function revealAnswers(){
+      document.querySelectorAll("input[type=checkbox]").forEach((box,i)=>{
+        box.checked  = statues[i].isGargoyle;
+        box.disabled = true;
+      });
+      feedback.textContent = "Réponse affichée.";
+      feedback.style.color = "#666";
+      nextBtn.style.display = "inline-block";
+    }
+
+    function showHint(){
+      alert("Indice : concentre-toi sur les arcs brisés et les grotesques !");
+      hintBtn.style.display = "none";
+    }
+  </script>
+</body>
+</html>

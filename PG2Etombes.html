@@ -19,7 +19,7 @@
 
             const formatCorrect = valeurs.every(val => /^\d{4}$/.test(val));
             if (!formatCorrect) {
-                message.textContent = "🚫 Veuillez entrer exactement 4 chiffres dans chaque case.";
+                message.textContent = "Veuillez entrer exactement 4 chiffres dans chaque case.";
                 message.style.color = "crimson";
                 bouton.style.display = "none";
                 return;
@@ -33,16 +33,16 @@
             essais++;
 
             if (bonnes === 4) {
-                message.textContent = "🩸 Bravo ! Vous pouvez poursuivre l'aventure.";
+                message.textContent = "Bravo ! Vous pouvez poursuivre l'aventure.";
                 message.style.color = "darkgreen";
                 bouton.style.display = "block";
                 boutonAbandon.style.display = "none";
             } else if (bonnes >= 2) {
-                message.textContent = "⚠️ Vous y êtes presque... Mais les ténèbres vous observent encore.";
+                message.textContent = "Vous y êtes presque... Mais les ténèbres vous observent encore.";
                 message.style.color = "#b8860b";
                 bouton.style.display = "none";
             } else {
-                message.textContent = "❌ Vous êtes en êtes loin. Fuyez avant qu’il ne soit trop tard.";
+                message.textContent = "Vous êtes en êtes loin. Fuyez avant qu’il ne soit trop tard.";
                 message.style.color = "#8b0000";
                 bouton.style.display = "none";
             }
@@ -61,7 +61,7 @@
 
             inputs.forEach((input, i) => input.value = correctes[i]);
 
-            message.textContent = "🩸 Voici les bonnes réponses. Vous pouvez poursuivre l'aventure.";
+            message.textContent = "Voici les bonnes réponses. Vous pouvez poursuivre l'aventure.";
             message.style.color = "darkgreen";
             bouton.style.display = "block";
             boutonAbandon.style.display = "none";
@@ -79,7 +79,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-title"><a href="index.html">Aventuriers</a></div>
+        <div class="nav-title"><a href="index.html">Hunt it</a></div>
         <div class="menu-toggle" id="menu-toggle">&#9776;</div>
         <ul class="nav-links" id="nav-links">
           <li><a href="regles.html">Règles</a></li>
@@ -91,7 +91,7 @@
               <li><a href="demo.html">Démo</a></li>
             </ul>
           </li>
-          <li><a href="#apropos">À propos</a></li>
+          <li><a href="apropos.html">À propos</a></li>
         </ul>
       </nav>
       <script>
@@ -129,7 +129,7 @@
         <img src="02.png" alt="Gothic in paris" class="image-gothique">
     </div>
     <div class="main-content">
-        <h1>Contexte historique</h1>
+        <h1>Cimetière du Montparnasse</h1>
         <p>Niché dans le 14e arrondissement de Paris, <b>le cimetière du Montparnasse</b> (anciennement « cimetière du Sud ») est l’un des grands cimetières parisiens créés hors des murs de la capitale au début du XIXe siècle. Il voit le jour en <b>1824</b>, dans le cadre des premières politiques modernes d’urbanisme.</p>
         <p>Mais ne vous y trompez pas : <b>derrière ses grilles noires et son calme minéral</b>, le cimetière du Montparnasse vibre <b>d’histoires et de secrets.</b></p>
         <p>Avec près de <b>35 000</b> concessions, il abrite une impressionnante galerie de destins : penseurs, écrivains, poètes, cinéastes, explorateurs, inventeurs, figures politiques ou religieuses</p>

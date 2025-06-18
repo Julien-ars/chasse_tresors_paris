@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=""utf-8>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Le Gothique</title>
+        <link rel="stylesheet" href = "style_gothique.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const menuToggle = document.getElementById("menu-toggle");
+          const navLinks = document.getElementById("nav-links");
+          const dropdownToggle = document.getElementById("dropdown-toggle");
+          const dropdownMenu = document.getElementById("dropdown-menu");
+        
+          // ouvrir/fermer le menu principal
+          menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+          });
+        
+          // ouvrir/fermer le sous-menu uniquement sur mobile
+          dropdownToggle.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+      
+          // referme tous les autres menus si besoin
+          document.querySelectorAll(".dropdown-menu").forEach(menu => {
+            if (menu !== dropdownMenu) menu.classList.remove("active");
+          });
+      
+          // toggle affichage du menu "Parcours"
+          dropdownMenu.classList.toggle("active");
+        }
+        });
+      
+        });
+        </script>
+
+    <body>
+      <nav class="navbar">
+        <div class="nav-title"><a href="index.html">Hunt it</a></div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="regles.html">Règles</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" id="dropdown-toggle">Parcours</a>
+            <ul class="dropdown-menu" id="dropdown-menu">
+              <li><a href="PG0menu.html">Gothique</a></li>
+              <li><a href="louislegrand.html">Louis-le-Grand</a></li>
+              <li><a href="demo.html">Démo</a></li>
+            </ul>
+          </li>
+          <li><a href="apropos.html">À propos</a></li>
+        </ul>
+      </nav>
+       
+      
+          <div class="main-content">
+
+            <div class="image-container">
+                <img src="titre.png" alt="Gothic in paris" class="image-gothique">
+                <img src="03.png" alt="Gothic in paris" class="image-gothique">
+            </div>
+
+             <h2>Notre-Dame</h2>
+             
+            <p>La cathédrale Notre-Dame de Paris, située sur <b>l’île de la Cité</b> au cœur de la capitale française, est l’un des <b>monuments gothiques </b> les plus emblématiques d’Europe. Sa construction débute au  <b>XIIe siècle </b>, précisément en 1163, et s’achève au  <b>XIVe siècle</b>. Elle se distingue par son architecture remarquable, notamment ses  <b>voûtes en ogive, ses arcs-boutants, ses vitraux exceptionnels</b> — parmi lesquels les célèbres rosaces — et ses sculptures, dont les célèbres <b>gargouilles</b>.</p>
+
+            <p>Elle a également inspiré de nombreuses <b>œuvres littéraires et artistiques</b>, comme le célèbre roman <b>Notre-Dame de Paris de Victor Hugo</b>, mettant en scène le personnage de Quasimodo, le sonneur de cloches, et renforçant la dimension mythique de ce lieu.</p>
+
+            <p>Malgré les dommages causés par l’incendie tragique d’avril 2019, Notre-Dame fait l’objet d’un vaste programme de <b>restauration</b> afin de préserver ce patrimoine exceptionnel pour les générations futures.</p>
+
+            <p>Sur le parvis de la cathédrale, un papier tombe depuis les tours. <b>Il est taché de sang…</b></p>
+        </div>
+        
+            <div class="image-container">
+            <img src="lettreNDsang.png" alt="lettre tachée de sang" class="image-gothique"> </div>
+
+        <div class="button-wrapper">
+            <a href="PG3Jgargouilles.html" class="continue-button">Continuer</a></button>
+        </div>
+      
+      </body>
+      </html>
+        
+      

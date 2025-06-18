@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duel à l'Opéra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #111;
+      --fg: #fafafa;
+      --accent: #d4af37; /* doré subtil */
+      --cell-size: min(24vw, 110px);
+      --note-size: min(18vw, 80px);
+    }
+    * {box-sizing: border-box;margin:0;padding:0;}
+    body {background:var(--bg);color:var(--fg);font-family:'Poppins',sans-serif;text-align:center;padding:1.5rem 1rem 4rem;}
+    h1,h2 {font-family:'Poppins',sans-serif;font-weight:700;margin-bottom:0.5rem;}
+    p {margin-bottom:1rem;}
+   
+    .board {display:grid;grid-template-columns:repeat(3,var(--cell-size));gap:0.5rem;justify-content:center;margin:1.5rem auto;}
+    .cell {width:var(--cell-size);height:var(--cell-size);background:#1d1d1d;border:2px solid #333;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:background 0.15s;}
+    .cell:hover {background:#222;}
+
+    .cell[data-symbol="X"]::before,.cell[data-symbol="X"]::after{content:"";position:absolute;top:50%;left:50%;width:70%;height:8%;background:var(--accent);} 
+    .cell[data-symbol="X"]::before{transform:translate(-50%,-50%) rotate(45deg);} 
+    .cell[data-symbol="X"]::after{transform:translate(-50%,-50%) rotate(-45deg);} 
+ 
+    .cell[data-symbol="O"]::before{content:"";position:absolute;top:50%;left:50%;width:82%;height:82%;border:7px solid var(--fg);border-radius:50%;transform:translate(-50%, -50%);} 
+
+    button {padding:0.6rem 1.4rem;border:none;background:var(--accent);color:#000;font-weight:600;border-radius:8px;cursor:pointer;margin:0.5rem;transition:opacity 0.15s;}
+    button.secondary {background:#444;color:var(--fg);font-family:'Poppins';font-weight: 400} 
+    button:hover{opacity:0.9;}
+
+    .grid{display:grid;grid-template-columns:repeat(4,var(--note-size));gap:0.8rem;justify-content:center;margin:1rem auto;}
+    .note{width:var(--note-size);height:var(--note-size);border:2px solid var(--accent);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;cursor:pointer;user-select:none;transition:background 0.15s;}
+    .note:hover{background:#222;}
+    .feedback{min-height:1.4rem;margin-top:0.8rem;}
+    #continueBtn,#acceptBtn{display:none;margin-top:1.5rem;font-family:'Poppins'; color: #ffffff;font-weight: 400;}
+    @media (min-width:600px){body{max-width:450px;margin:auto;}}
+  </style>
+</head>
+<body>
+  <!-- Morpion page (intro + plateau) -->
+  <div id="morpionPage">
+    <h2>Morpion contre Cenula</h2>
+    <p>Bats-le pour mériter l'ultime défi…</p>
+
+    <section id="game">
+      <div id="board" class="board"></div>
+      <p id="result" class="feedback"></p>
+      <button id="skipTic" class="secondary">Passer le jeu</button>
+      <button id="acceptBtn">Accepter le défi</button>
+    </section>
+  </div>
+  
+  <!-- Audio fantôme -->
+  <audio id="phantom-audio" preload="auto" src="phantom.mp3" style="display:none;"></audio>
+
+  <!-- Mémoire page -->
+  <section id="memory" style="display:none;">
+    <h2>Défi Mémoire musicale</h2>
+    <p>Souviens‑toi des séquences : 4 tours pour capturer le Fantôme !</p>
+    <div id="sequence-grid" class="grid"></div>
+    <p id="memory-feedback" class="feedback"></p>
+    <button id="startSeq"class="secondary">Démarrer</button>
+    <button id="skipMem" class="secondary">Passer le jeu</button>
+    <button id="continueBtn">Continuer</button>
+  </section>
+
+
+<script>
+  /* ---------- Morpion ---------- */
+  const boardEl=document.getElementById("board");
+  const resultEl=document.getElementById("result");
+  const morpionPage=document.getElementById("morpionPage");
+  const skipTic=document.getElementById("skipTic");
+  const acceptBtn=document.getElementById("acceptBtn");
+
+  let board=["","","","","","","","",""];
+  let boardActive=true;
+
+  function renderBoard(){
+    boardEl.innerHTML="";
+    board.forEach((v,i)=>{
+      const c=document.createElement("div");
+      c.className="cell";
+      if(v) c.dataset.symbol=v;
+      c.onclick=()=>boardActive&&playTurn(i);
+      boardEl.appendChild(c);
+    });
+  }
+
+  function playTurn(i){
+    if(board[i])return;
+    board[i]="X";
+    renderBoard();
+    if(checkWin("X")) { victoryMorpion(); return; }
+    if(board.every(c=>c)) { skipMorpion(); return; }
+    setTimeout(aiTurn,400);
+  }
+
+  function aiTurn(){
+    const moves=board.map((c,i)=>c?null:i).filter(v=>v!==null);
+    if(!moves.length) { skipMorpion(); return; }
+    const move=moves[Math.random()*moves.length|0];
+    board[move]="O";
+    renderBoard();
+    if(checkWin("O")) {
+      resultEl.textContent="Cenula t’a battu. Recommence !";
+      setTimeout(restart,1300);
+    } else if(board.every(c=>c)) skipMorpion();
+  }
+
+  function checkWin(p){
+    return [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+      .some(([a,b,c])=>board[a]===p&&board[b]===p&&board[c]===p);
+  }
+
+  function restart(){
+    board=["","","","","","","","",""];
+    resultEl.textContent="";
+    acceptBtn.style.display="none";
+    boardActive=true;
+    renderBoard();
+  }
+
+  function disableBoard(){
+    boardActive=false;
+    boardEl.style.pointerEvents="none";
+  }
+
+  function victoryMorpion(){
+    resultEl.innerHTML="Bravo, vous avez battu Cenula !<br>Un autre défi vous attend.";
+    acceptBtn.style.display="inline-block";
+    disableBoard();
+  }
+
+  function skipMorpion(){
+    resultEl.textContent="Un autre défi vous attend.";
+    acceptBtn.style.display="inline-block";
+    disableBoard();
+  }
+
+  skipTic.onclick=skipMorpion;
+  acceptBtn.onclick=()=>{
+    audio.play();
+    morpionPage.style.display="none";
+    document.getElementById("memory").style.display="block";
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
+  
+
+  renderBoard();
+
+  /* ---------- Mémoire musicale ---------- */
+  const notes=["DO","RE","MI","FA"];
+  const grid=document.getElementById("sequence-grid");
+  const feed=document.getElementById("memory-feedback");
+  const startBtn=document.getElementById("startSeq");
+  const skipMem=document.getElementById("skipMem");
+  const audio=document.getElementById("phantom-audio");
+  const continueBtn=document.getElementById("continueBtn");
+
+  let sequence=[],input=[],round=1,clickable=false;
+
+  function startSequence(){
+    sequence=[];input=[];feed.textContent="";
+    skipMem.style.display="inline-block";
+    continueBtn.style.display="none";
+    startBtn.style.display="none"; // caché pendant la partie
+    round=1;
+    runRound();
+  }
+
+  function runRound(){
+    clickable=false;
+    sequence=Array.from({length:round},()=>notes[Math.random()*notes.length|0]);
+    grid.innerHTML="";
+    sequence.forEach(n=>{
+      const d=document.createElement("div");d.className="note";d.textContent=n;grid.appendChild(d);});
+    setTimeout(renderOptions,1000*sequence.length);
+  }
+
+  function renderOptions(){
+    input=[];grid.innerHTML="";
+    notes.forEach(n=>{
+      const d=document.createElement("div");d.className="note";d.textContent=n;d.onclick=()=>handleInput(n);grid.appendChild(d);});
+    clickable=true;
+  }
+
+  function handleInput(n){
+    if(!clickable) return;
+    input.push(n);
+    if(input[input.length-1]!==sequence[input.length-1]){
+      feed.textContent="Mauvaise note ! Recommence depuis le début.";
+      round=1;clickable=false;skipMem.style.display="inline-block";continueBtn.style.display="block";return;
+    }
+    if(input.length===sequence.length){
+      if(round===4){
+        feed.textContent="Tu as capturé le Fantôme de l’Opéra !";
+        audio.play();clickable=false;skipMem.style.display="none";continueBtn.style.display="block";startBtn.style.display="none"; // cacher après victoire
+      }else{round++;feed.textContent="Bien joué ! Tour suivant…";setTimeout(runRound,1000);} }
+  }
+
+  function skipMemory(){
+    grid.innerHTML="";feed.textContent="Défi ignoré.";
+    clickable=false;continueBtn.style.display="block";skipMem.style.display="none";startBtn.style.display="block";audio.pause();
+  }
+
+  startBtn.onclick=startSequence;
+  skipMem.onclick=skipMemory;
+  continueBtn.onclick=()=>location.href="next.html";
+
+  document.getElementById("continueBtn").addEventListener("click", () => {
+  window.location.href = "PGfin.html";
+});
+
+</script>
+</body>
+</html>

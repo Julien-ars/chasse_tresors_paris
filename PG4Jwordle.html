@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- ① -->
+  <title>Wordle - Opéra</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<style>
+
+  :root{                                    /* ② */
+  --cell: clamp(50px, 18vw, 75px);
+  --cell-font: clamp(1.4rem, 6vw, 2.2rem);
+  --input-w: clamp(240px, 70vw, 380px);
+  }
+  
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121213;
+    color: #d7dadc;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+  }
+  
+  h2 {
+    color: #ffffff;
+  }
+  
+  p {
+    color: #888;
+  }
+  
+  .board {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width:calc(var(--cell)*5 + 4*5px); /* ④ */
+    margin: 30px auto;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .cell {
+    width:var(--cell);
+    height:var(--cell);
+    font-size:var(--cell-font);
+    border: 2px solid #3a3a3c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: #121213;
+    color: white;
+    text-transform: uppercase;
+    transition: background-color 0.4s ease, transform 0.3s ease;
+  }
+  
+  .correct {
+    background-color: #538d4e !important;
+    border-color: #538d4e !important;
+  }
+  
+  .present {
+    background-color: #b59f3b !important;
+    border-color: #b59f3b !important;
+  }
+  
+  .absent {
+    background-color: #3a3a3c !important;
+    border-color: #3a3a3c !important;
+  }
+  
+  input[type="text"] {
+    font-size: 1.2em;
+    padding: 10px;
+    width:var(--input-w);
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+  }
+  
+  button {
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #538d4e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  #wordle-feedback {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #f6f7f8;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  #continue-button {
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  background-color: #6d6d6d;
+  border: none;
+  border-radius: 12px;
+  text-decoration: none;}
+
+
+</style>
+
+<body>
+  <h2>Devine le mot mystère</h2>
+  <p>Rentrez 5 lettres</p>
+  <div id="wordle-board" class="board"></div>
+  <input type="text" id="wordle-input" placeholder="Tape ton mot ici..." />
+  <br><button onclick="checkGuess()">Valider</button>
+  <p id="wordle-feedback"></p>
+  <div id="next-button" style="display: none; margin-top: 30px; text-align: center;">
+    <a href="PG5Eaffiche.html" id="continue-button">Continuer</a>
+  </div>
+
+  <script>
+    const secret = "opera";
+    const maxTries = 6;
+    let tries = 0;
+
+    document.getElementById("wordle-input").setAttribute("maxlength", secret.length);
+
+    function createRow(guess) {
+      const row = document.createElement("div");
+      row.className = "row";
+      const secretArr = secret.split('');
+      const guessArr = guess.split('');
+      const result = Array(secret.length).fill('absent');
+      const secretUsed = Array(secret.length).fill(false);
+
+      // Première passe : marquer les lettres correctes
+      for (let i = 0; i < secret.length; i++) {
+        if (guessArr[i] === secretArr[i]) {
+          result[i] = 'correct';
+          secretUsed[i] = true;
+        }
+      }
+
+      // Deuxième passe : marquer les lettres présentes mais mal placées
+      for (let i = 0; i < secret.length; i++) {
+        if (result[i] !== 'correct') {
+          for (let j = 0; j < secret.length; j++) {
+            if (!secretUsed[j] && guessArr[i] === secretArr[j]) {
+              result[i] = 'present';
+              secretUsed[j] = true;
+              break;
+            }
+          }
+        }
+      }
+
+      for (let i = 0; i < secret.length; i++) {
+        const letter = document.createElement("div");
+        letter.className = "cell " + result[i];
+        letter.textContent = guess[i] ? guess[i].toUpperCase() : "";
+        row.appendChild(letter);
+      }
+
+      return row;
+    }
+
+    function checkGuess() {
+      const input = document.getElementById("wordle-input");
+      const guess = input.value.toLowerCase().trim();
+
+      if (guess.length !== secret.length) {
+        document.getElementById("wordle-feedback").textContent = " Le mot doit contenir exactement " + secret.length + " lettres.";
+        return;
+      }
+
+      if (tries >= maxTries) return;
+
+      const board = document.getElementById("wordle-board");
+      board.appendChild(createRow(guess));
+      tries++;
+
+      if (guess === secret) {
+        document.getElementById("wordle-feedback").textContent = "Bravo ! Tu as deviné OPERA ! Rendez-vous l'Opéra Garnier...";
+        input.disabled = true;
+        document.getElementById("next-button").style.display = "block"; // 👈 affiche le bouton
+      } else if (tries === maxTries) {
+        document.getElementById("wordle-feedback").textContent = "Tu as épuisé tes essais ! Le mot était OPERA, rendez-vous l'Opéra Garnier...";
+        input.disabled = true;
+      } else {
+        document.getElementById("wordle-feedback").textContent = "Ce n’est pas le bon mot. Réessaie !";
+        input.value = "";
+        input.focus();
+      }
+    }
+  </script>
+</body>
+</html>

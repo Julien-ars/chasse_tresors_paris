@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf8">
+  <title>Chasse à Paris</title>
+  <link rel="stylesheet" href="style_gothique.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-title"><a href="index.html">Hunt it</a></div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="regles.html">Règles</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" id="dropdown-toggle">Parcours</a>
+        <ul class="dropdown-menu" id="dropdown-menu">
+          <li><a href="PG0menu.html">Gothique</a></li>
+          <li><a href="louislegrand.html">Louis-le-Grand</a></li>
+          <li><a href="demo.html">Démo</a></li>
+        </ul>
+      </li>
+      <li><a href="#apropos">À propos</a></li>
+    </ul>
+  </nav>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+      const dropdownToggle = document.getElementById("dropdown-toggle");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+    
+      // ouvrir/fermer le menu principal
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    
+      // ouvrir/fermer le sous-menu uniquement sur mobile
+      dropdownToggle.addEventListener("click", (e) => {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+  
+      // referme tous les autres menus si besoin
+      document.querySelectorAll(".dropdown-menu").forEach(menu => {
+        if (menu !== dropdownMenu) menu.classList.remove("active");
+      });
+  
+      // toggle affichage du menu "Parcours"
+      dropdownMenu.classList.toggle("active");
+    }
+    });
+  
+    });
+    </script>
+    <div class="main-content">
+        <h2>A PROPOS DU PROJET</h2>
+        <h3>1. Qui sommes nous?</h3>
+        <p>Nous sommes quatre étudiants du CPES Science des données, Art et Culture au lycée Louis-le-Grand et à l'Université PSL. Ce site internet constitue notre projet de fin d'année.</p>
+        <div class="equipe">
+  <div class="membre">
+    <img src="georges.png" alt="Georges" />
+    <h4>Georges</h4>
+    <p>"Je me suis baladé seul un dimanche dans des cimetières avec un carnet à la main."</p>
+  </div>
+  <div class="membre">
+    <img src="emma.png" alt="Emma" />
+    <h4>Emma</h4>
+    <p>"J'ai insulté GitHub et j'ai fait la pub de VScode pendant une semaine."</p>
+  </div>
+  <div class="membre">
+    <img src="agathe.png" alt="Agathe" />
+    <h4>Agathe</h4>
+    <p>"J'ai dû faire des jeux de mots terribles sur la mort."</p>
+  </div>
+  <div class="membre">
+    <img src="julien.png" alt="Julien" />
+    <h4>Julien</h4>
+    <p>"J'ai dû m'imposer l'écoute du Fantôme de l'Opéra pendant des heures."</p>
+  </div>
+</div>
+        <h3>2. Pourquoi ce projet ?</h3>
+        <ul>
+            <li><strong>Programmation :</strong> Ce projet nous a permis de nous surpasser au niveau de la programmation notamment en html. Ces compétences seront déterminantes dans la suite de notre formation.</li>
+            <li><strong>Culture :</strong> En créant les parcours nous avons puisé à la fois dans les lieux iconiques de Paris mais aussi dans le cours de cette année. En effet le Gothique est un sujet dont nous avons traité dans deux matières : Littérature Mondiale et Culture Contemporaine en anglais.</li>
+            <li><strong>Travail d'équipe :</strong> L'organisation du projet et la division du travail a été un point déterminant lors de la conception du site et nous a permis de nous améliorer.</li>
+        </ul>
+        <h3>3. Nos outils</h3>
+        <ul>
+            <li><strong>VScode :</strong> Nous avons tout codé dessus.</li>
+            <li><strong>GitHub :</strong> Le site est hébergé sur GitHub.</li>
+            <li><strong>Canva :</strong> Les design, lettres et indices ont été créés grâce à Canva.</li>
+        </ul>
+        <h3>4. Qu'est-ce que le CPES ?</h3>
+        <p>Vous voulez en apprendre plus sur le CPES DAC? Nous vous invitons à explorer le site de Manon, Luna, Camille, Paola, Héloïse et Nina qui vous donnera toutes les informations que vous cherchez! C'est leur projet de fin d'année et, en plus des informations générales sur les matières, vous trouverez les liens vers les autres projets!</p>
+
+        <h3>5. J'ai d'autres questions !</h3>
+        <p>Si vous souhaitez d'autres informations allez jeter un oeil sur notre page Instagram, ou envoyez-nous un mail à l'adresse georges.bondanelli@psl.eu</p>
+</body>
+</html>
+  
+  
+  

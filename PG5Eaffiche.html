@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Gothique</title>
+  <link rel="stylesheet" href="style_gothique.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+.bloc-final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  gap: -2000px; /* << réduit l'espace entre l'affiche et les noms */
+}
+
+.affiche-opera {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.date-checker {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ✅ ceci centre les boutons */
+}
+
+.date-title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.date-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+
+.date-input {
+  padding: 12px;
+  font-size: 1em;
+  width: 180px;
+  max-width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+}
+.validate-button, #bouton-continu, #bouton-abandonner {
+  margin-top: 10px;
+  padding: 10px 16px;
+  font-size: 1em;
+  border: none;
+  border-radius: 20px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.date-result {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  .affiche-opera {
+    width: 90%;
+  }
+
+  .date-input {
+    width: 100% !important;        /* prendre toute la largeur dispo */
+    max-width: none !important;    /* enlever toute limite max */
+    min-width: 280px;              /* taille mini confortable */
+    box-sizing: border-box;        /* padding inclus dans la largeur */
+  }
+  .validate-button, #bouton-continu, #bouton-abandonner {
+    font-size: 0.9em;
+    padding: 8px 12px;
+  }
+
+  .date-title {
+    font-size: 1em;
+  }
+}
+
+a.validate-button {
+  text-decoration: none;  /* retire le soulignement */
+  color: white;           /* couleur du texte */
+  display: inline-block;  /* pour respecter le style bouton */
+}
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-title"><a href="index.html">Hunt it</a></div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="regles.html">Règles</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" id="dropdown-toggle">Parcours</a>
+        <ul class="dropdown-menu" id="dropdown-menu">
+          <li><a href="PG0menu.html">Gothique</a></li>
+          <li><a href="louislegrand.html">Louis-le-Grand</a></li>
+          <li><a href="demo.html">Démo</a></li>
+        </ul>
+      </li>
+      <li><a href="apropos.html">À propos</a></li>
+    </ul>
+  </nav>
+
+  <div class="image-container">
+    <img src="titre.png" alt="Gothic in paris" class="image-gothique">
+    <img src="05.png" alt="Gothic in paris" class="image-gothique">
+  </div>
+
+  <div class="main-content">
+    <h2>L'Opéra Garnier </h2>
+    <p>Vous voici devant <b>l'Opéra Garnier</b>, le point d’orgue de notre histoire.</p>
+    <p>Le Palais Garnier est l’un des opéras les plus célèbres au monde. Construit entre 1861 et 1875, il porte le nom de son architecte, Charles Garnier. Cet édifice est un chef-d’œuvre de l’architecture du Second Empire, <b>mêlant style baroque, néo-classique et Renaissance.</b></p>
+    <p>Sa façade richement ornée, ses majestueux escaliers en marbre et son grand foyer somptueusement décoré témoignent de la splendeur de cette époque. La salle de spectacle, célèbre pour <b>son plafond peint par Marc Chagall</b>, accueille chaque année des représentations d’opéra et de ballet qui attirent un public international.</p>
+    <p>Le Palais Garnier est aussi connu pour avoir inspiré <b>la célèbre légende du Fantôme de l’Opéra</b>, ce mystérieux personnage qui hanterait ses couloirs et a fasciné des générations entières. Ce monument emblématique incarne à la fois l’histoire, l’art et la vie culturelle parisienne depuis plus d’un siècle.</p>
+    <p>Sur un mur à côté, une affiche abîmée attire votre attention, la voici :</p> 
+    <div class="bloc-final">
+      <img src="affiche.png" alt="affiche opéra" class="affiche-opera">
+      <p>Le Vampire a apparemment demandé de l’aide au <b>légendaire Fantôme de l’Opéra</b>. Mais certaines informations manquent à l’appel… <b>Observez les façades de l’Opéra</b> pour compléter les trous et assister au spectacle.</p>
+      <div class="date-checker">
+        <p class="date-title">Entrez les noms pour lancer le spectacle :</p>
+        <div class="date-inputs">
+          <input type="text" maxlength="10" class="date-input" placeholder="">
+          <input type="text" maxlength="10" class="date-input" placeholder="">
+        </div>
+        <button class="validate-button" onclick="verifierDates()">Soumettre</button>
+        <p id="message-resultat" class="date-result"></p>
+        <a href="PG5partition.html" id="bouton-continu" class="validate-button" style="display: none;">Continuer</a>
+        <button id="bouton-abandonner" class="validate-button" style="display: none;" onclick="abandonner()">Abandonner</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let essais = 0;
+
+    function verifierDates() {
+      const inputs = document.querySelectorAll('.date-input');
+      const valeurs = Array.from(inputs).map(input => input.value.trim().toUpperCase());
+      const correctes = ["WEBER", "MEHUL"];
+      const message = document.getElementById('message-resultat');
+      const bouton = document.getElementById('bouton-continu');
+      const boutonAbandon = document.getElementById('bouton-abandonner');
+
+      let bonnes = 0;
+      for (let i = 0; i < 2; i++) {
+        if (valeurs[i] === correctes[i]) bonnes++;
+      }
+
+      essais++;
+
+      if (bonnes === 2) {
+        message.textContent = "Bravo ! Vous pouvez à présent assister au spectacle...";
+        message.style.color = "darkgreen";
+        bouton.style.display = "block";
+        boutonAbandon.style.display = "none";
+      } else if (bonnes === 1) {
+        message.textContent = "Vous y êtes presque... Mais ce n'est pas encore suffisant.";
+        message.style.color = "#b8860b";
+        bouton.style.display = "none";
+      } else {
+        message.textContent = "Vous en êtes loin...";
+        message.style.color = "#8b0000";
+        bouton.style.display = "none";
+      }
+
+      if (essais >= 3) {
+        boutonAbandon.style.display = "block";
+      }
+    }
+
+    function abandonner() {
+      const correctes = ["WEBER", "MEHUL"];
+      const inputs = document.querySelectorAll('.date-input');
+      const message = document.getElementById('message-resultat');
+      const bouton = document.getElementById('bouton-continu');
+      const boutonAbandon = document.getElementById('bouton-abandonner');
+
+      inputs.forEach((input, i) => input.value = correctes[i]);
+
+      message.textContent = "Voici les bonnes réponses. Vous pouvez à présent assister au spectacle...";
+      message.style.color = "darkgreen";
+      bouton.style.display = "block";
+      boutonAbandon.style.display = "none";
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const inputs = document.querySelectorAll('.date-input');
+      inputs.forEach(input => {
+        input.addEventListener('input', () => {
+          input.value = input.value.slice(0, 10);
+        });
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+      const dropdownToggle = document.getElementById("dropdown-toggle");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      dropdownToggle.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          document.querySelectorAll(".dropdown-menu").forEach(menu => {
+            if (menu !== dropdownMenu) menu.classList.remove("active");
+          });
+          dropdownMenu.classList.toggle("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
